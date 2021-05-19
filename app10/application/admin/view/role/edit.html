@@ -1,0 +1,31 @@
+{extend name="public/base" /}
+{block name="body"}
+<div class="form">
+    <form action="" method="post" />
+    <input type="text" name="id" hidden="hidden" value="{$data['id']}">
+    <dl class="row">
+        <dt class="left">角色名：</dt>
+        <dd class="right"><input class="input" type="text" name="name" id="name" placeholder="名称" value="{$data['name']}" /></dd>
+    </dl>
+    <dl class="row">
+        <dt class="left">角色描述：</dt>
+        <dd class="right"><input  class="input" type="text" name="remark" id="remark" placeholder="描述" value="{$data['remark']}"/></dd>
+    </dl>
+    <dl class="row">
+        <dt class="left">角色状态：</dt>
+        <dd class="right">
+            <input  class="inputradio" type="radio" name="status" value="1" {eq name="$data['status']" value="1"} checked="checked" {/eq} autocomplete="off" id="" />启用
+            <input  class="inputradio" type="radio" name="status" value="0" {eq name="$data['status']" value="0"} checked="checked" {/eq} autocomplete="off" id="" />停用
+        </dd>
+    </dl>
+
+    <dl class="row">
+        <dt class="left"></dt>
+        <dd class="right">
+            {:get_link_info('admin', 'role', 'edit', array(), '提交', array('type' => 'submit', 'class' => 'submitbt', 'name' => 'bt', 'id' => 'bt'), 'input')}
+         </dd>
+    </dl>
+    </form>
+</div>
+
+{/block}

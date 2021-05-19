@@ -1,0 +1,51 @@
+{extend name="public/base" /}
+{block name="body"}
+<div class="form">
+    <form class="layui-form" action="" method="post" />
+        <dl class="row">
+            <dt class="left">角色名：</dt>
+            <dd class="right"><input lay-verify="required" class="input" type="text" name="name" id="name" placeholder="名称" /></dd>
+        </dl>
+        <dl class="row">
+            <dt class="left">角色描述：</dt>
+            <dd class="right"><input lay-verify="required" class="input" type="text" name="remark" id="remark" placeholder="描述"/></dd>
+        </dl>
+        <dl class="row layui-form-item">
+            <dt class="left">角色状态：</dt>
+            <dd class="right">
+                <input checked="" lay-filter="nodeSwitch" type="checkbox" name="status" value="1" lay-skin="switch" lay-text="ON|OFF">
+            </dd>
+        </dl>
+
+        <dl class="row">
+            <dt class="left"></dt>
+            <dd class="right">
+                {:get_link_info('admin', 'role', 'add', array(), '提交', array('lay-submit' => '', 'type' => '', 'lay-filter' => "submitbt", 'class' => 'submitbt layui-btn layui-btn-normal', 'name' => 'bt', 'id' => 'bt'), 'input')}
+            </dd>
+        </dl>
+    </form>
+    <script>
+        layui.use(['form','layer'], function(){
+            var form = layui.form;
+            var layer = layui.layer;
+            form.render();
+
+            form.on('switch(nodeSwitch)', function (data) {
+                if(data.elem.checked){
+                    data.elem.value = 1;
+                } else {
+                    data.elem.value = 0;
+                }
+                console.log(data, data.elem.checked, data.value);
+            });
+
+            form.on('submit(submitbt)', function () {
+                console.log('1231231');
+                $("form.layui-form").submit();
+                return false;
+            });
+        });
+    </script>
+</div>
+
+{/block}

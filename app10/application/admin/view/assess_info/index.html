@@ -1,0 +1,44 @@
+{extend name="public/base" /}
+{block name="head_css"}
+<link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/appling.css" />
+{/block}
+{block name="body"}
+<div style="margin-bottom: 15px;">
+
+  <!--   <span class="add-apply"><a target="_blank" href="{:url('admin/AssessInfo/applyList', array('status' => 0))}" class="layui-btn">申请列表</a></span> -->
+    <span class="add-apply"><!-- <a target="_blank" href="{:url('admin/AssessInfo/noAcceptIndex', array('status' => 1))}" class="layui-btn">未受理</a> -->
+        {:get_link_info('admin', 'AssessInfo', 'noAcceptIndex', array('status' => 1), ' 未受理', array('class' => 'layui-btn', 'target' => '_blank'), 'a')}</span>
+    <span class="add-apply"><!-- <a target="_blank" href="{:url('admin/AssessInfo/noAssessIndex', array('status' => 2))}" class="layui-btn">待评估</a> -->
+        {:get_link_info('admin', 'AssessInfo', 'noAssessIndex', array('status' => 2), ' 待评估', array('class' => 'layui-btn', 'target' => '_blank'), 'a')}
+    </span>
+    <span class="add-apply"><!-- <a target="_blank" href="{:url('admin/AssessInfo/beAssessIndex', array('status' => 3))}" class="layui-btn">评估中</a> -->
+    {:get_link_info('admin', 'AssessInfo', 'beAssessIndex', array('status' => 3), ' 评估中', array('class' => 'layui-btn', 'target' => '_blank'), 'a')}</span>
+    <span class="add-apply"><!-- <a target="_blank" href="{:url('admin/AssessInfo/yetAssessIndex', array('status' => 4))}" class="layui-btn">已评估</a> -->
+        {:get_link_info('admin', 'AssessInfo', 'yetAssessIndex', array('status' => 4), ' 已评估', array('class' => 'layui-btn', 'target' => '_blank'), 'a')}
+    </span>
+    <span class="add-apply right"><!-- <a target="_blank" href="{:url('admin/AssessInfo/addApply')}" class="layui-btn">新添加申请</a> -->
+        {:get_link_info('admin', 'AssessInfo', 'addApply', array(), ' 新添加申请', array('class' => 'layui-btn', 'target' => '_blank'), 'a')}</span>
+
+</div>
+<div class="list list_6">
+    <ul class="title">
+        <li>申请单位</li>
+        <li style="width: 7%">申报年份</li>
+        <li>申报开始时间</li>
+        <li>申报结束时间</li>
+        <li>状态</li>
+        <li style="width: 26%">操作</li>
+    </ul>
+    {volist name="list" id="vo"}
+    <ul>
+        <li>{$vo.uid}</li>
+        <li style="width: 7%">{$vo.year}</li>
+        <li>{$date = date('Y-m-d H:i:s', time())}</li>
+        <li></li>
+        <li>未受理</li>
+        <li>{:get_link_info('admin', 'AssessInfo', 'del', array('id' => $vo['id']), '删除', array('onClick' => "return confirm('确定要删除该信息？')"), 'a')}</li>
+    </ul>
+    {/volist}
+
+</div>
+{/block}

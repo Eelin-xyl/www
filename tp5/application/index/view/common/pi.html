@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<table width="100%" >
+  <tr>
+    <td width="20%" align="center">
+    <a href="{:url('/index/common/homepage')}">
+    <img src="__STATIC__/common/logo.jpg" width="80" height="80" />
+    </a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/pi')}">个人信息</a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/order')}">我的订单</a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/addgoods')}">添加商品</a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/charge')}">充值中心</a></td>
+  </tr>
+</table>
+<a href="{:url('/index/account/logout')}">
+<button>退出登录</button></a>
+
+<h1 align="center">个人资料</h1>
+<table align="center">
+{volist name="info" id="vo"}
+  <tr>
+    <td>账号：{$uid}</td>
+  </tr>
+  <tr>
+  <td>昵称：{$vo.nickname}</td>
+  </tr>
+  <tr>
+    <td>密码：{$vo.password}</td>
+  </tr>
+  <tr>
+    <td>余额：￥{$vo.money}</td>
+  </tr>
+  <tr>
+    <td>地址：{$vo.origin}</td>
+  </tr>
+  <tr>
+    <td>账户创建时间：{$regtime = date('Y-m-d H:i:s', $vo.regtime)}</td>
+  </tr>
+{/volist}
+</table>
+
+<h1 align="center">个人商品</h1>
+<table align="center">
+<tr>
+{volist name="ginfo" id="vo"}
+<td>
+  <table>
+    <tr align="center">
+      <td><a href="{:url('/index/shop/goods', ['gid' => $vo['gid']])}">
+          <img src="__STATIC__{$vo.image}" width="150" height="200" />
+      </a></td>
+    </tr>
+    <tr align="center">
+      <td>{$vo.name}</td>
+    </tr>
+    <tr align="center">
+      <td>价格：￥{$vo.price}</td>
+    </tr>
+    <tr align="center">
+      <td>库存：{$vo.amount}</td>
+    </tr>
+  </table>
+</td>
+{/volist}
+</tr>
+</table>
+
+</body>
+</html>

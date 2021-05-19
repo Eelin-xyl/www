@@ -1,0 +1,143 @@
+
+{extend name="public/base" /}
+{block name="head_css"}
+<link rel="stylesheet" type="text/css" href="" />
+{/block}
+{block name="body"}
+<div class="form">
+    <form id="add-item-form" action="{:get_link_info('admin', 'AssessManage', 'add')}" method="post">
+        <dl class="row">
+            <dt class="left">本级指标序号：</dt>
+            <dd class="right">
+                <input type='number' name='thisNum' min='1'>
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="left">指标名称：</dt>
+            <dd class="right">
+                <input type='text' name='name'>
+            </dd>
+        </dl>
+
+        <div id="wrap-box">
+            <!--类型、属性、分数、提示组合为json格式-->
+            <section class="option-wrap">
+                <div class='option'>
+                    <dl class="row">
+                        <dt class="left">类型：</dt>
+                        <dd class="right">
+                            <select class="select" name="type[0]" id="type">
+                                        {volist name=":config('custom_attr_base')" id="vo"}
+                                        <option value="{$key}">{$vo}</option>
+                                        {/volist}
+                            </select>
+                        </dd>
+                    </dl>
+                    <dl class="row">
+                        <dt class="left">属性名：</dt>
+                        <dd class="right">
+                            <input type="text" class="defaultName" name="defaultName[0]">
+                        </dd>
+                    </dl>
+                    <dl class="row">
+                        <dt class="left">默认值：</dt>
+                        <dd class="right">
+                            <input class="default" type='text' name='default[0]'>
+                            <span class="notice">备选项，选项之间用“|”分割</span>
+                        </dd>
+                    </dl>
+                    <dl class="row">
+                        <dt class="left">分数：</dt>
+                        <dd class="right">
+                            <input class="grade" type='text' name='grade[0]'>
+                            <span class="notice">如果默认值有选项，分数与之对应</span>
+                        </dd>
+                    </dl>
+                    <dl class="row">
+                        <dt class="left">提示：</dt>
+                        <dd class="right">
+                            <input class="hint" type='text' name='hint[0]'>
+                        </dd>
+                    </dl>
+                </div>
+            </section>
+            <dl class="row">
+                <div class="btn-arr">
+                    <span title="添加" id="add-item" class="layui-btn layui-btn-sm"><i class="layui-icon layui-icon-add-1"></i></span>
+                    <span id='del-item' class="layui-btn layui-btn-sm layui-btn-danger" title="删除"><i class="layui-icon layui-icon-delete"></i></span>
+                </div>
+            </dl>
+            <dl class="row">
+                <dt class="left">总分：</dt>
+                <dd class="right">
+                    <input type='number' name='score' min='1'>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="left">指标评分标准：</dt>
+                <dd class="right">
+                    <input type='text' name='indicator_hints'>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="left">计算类型：</dt>
+                <dd class="right">
+                    {volist name=":config('calculation_type')" id="vo"}
+                        <input value="{$key}" class="choice" type="radio" name="calculate_type" id="needpic_{$key}" /> <label for="needpic_{$key}">{$vo}&nbsp;&nbsp;&nbsp;</label>
+                    {/volist}
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="left">自定义计算方法名：</dt>
+                <dd class="right">
+                    <input  type='text' name='calculate_function'>
+                </dd>
+            </dl>
+        </div>
+        <input type="hidden" name="level" value="{$thisLevel}" />
+        <input type="hidden" name="pid" value="{$pid}" />
+
+        <dl class="row">
+            <dt class="left"></dt>
+            <dd class="right">
+                {:get_link_info('admin', 'ReportMana', 'addStandard', array(), '提交', array('class' => "submitbt", 'type' => "submit",'id' => "bt"), 'input')}
+            </dd>
+        </dl>
+        <script>
+            $(function () {
+                var option = $("#add-item-form .option");
+                var index = option.length-1;
+                if (option.length === 1) {
+                    $("#del-item").hide();
+                }
+                $("#add-item").click(function () {
+                    var muban = option.last().clone(true);
+                    index++;
+                    muban.find('.select').attr("name", 'type['+index+']');
+                    muban.find('.defaultName').val('').attr("name", 'defaultName['+index+']');
+                    muban.find('.default').val('').attr("name", 'default['+index+']');
+                    muban.find('.grade').val('').attr("name", 'grade['+index+']');
+                    muban.find('.hint').val('').attr("name", 'hint['+index+']');
+                    $(".option-wrap").append(muban);
+                    $("#del-item").fadeIn(300);
+                });
+                $("#del-item").click(function () {
+                    if (index > 0) {
+                        $("#add-item-form .option").last().remove();
+                        index--;
+                    }
+                    if (index === 0){
+                        $(this).fadeOut(300);
+                    }
+                });
+                var thisLevel = {$thisLevel};
+                var pid = {$pid};
+                if (thisLevel == 1 || thisLevel == 2) {
+                    $("#wrap-box").hide();
+                }
+                
+            });
+        </script>
+    </form>
+</div>
+{/block}

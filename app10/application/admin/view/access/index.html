@@ -1,0 +1,40 @@
+{extend name="public/base" /}
+{block name="body"}
+<div class="form">
+    <form action="" method="post" />
+    <input hidden="hidden" type="text" name="id" value="{$id}" />
+    {volist name="data" id="vo"}
+        <div>
+            <p style="font-size:15px;height:44px;line-height:44px;display:block;">
+            <span style="background:#438eb9;display:block;text-indent:10px;height:42px;line-height:42px">
+                {$vo['title']}<input type='checkbox' name='access[]' value="{$vo['id']}_{$vo['level']}" level='1' {eq name="$vo['access']" value="1"} checked='checked' {/eq} />
+            </span>
+            </p>
+            {volist name="$vo[config('classify_name')]" id="voo"}
+                <dl style="margin:10px  30px;border:1px solid #dcdcdc;height:auto;display:block;overflow:hidden;">
+                    <dt>
+                    <p style="font-size:10px;display:block;height:36px;line-height:36px;background:#BEE8F1;text-indent:10px;">
+                        {$voo['title']}<input type='checkbox' name='access[]' value="{$voo['id']}_{$voo['level']}" level='1' {eq name="$voo['access']" value="1"} checked='checked'{/eq} />
+                    </p>
+                    </dt>
+                {volist name="$voo[config('classify_name')]" id="vooo"}
+                    <dd style="padding:10px;float:left;display:block;">
+                        <span style="color:#344B50;font-size:12px;cursor:default;">{$vooo['title']}</span>
+                            <input type='checkbox' name='access[]' value="{$vooo['id']}_{$vooo['level']}" level='1' {eq name="$vooo['access']" value="1"} checked='checked'{/eq} />
+
+                    </dd>
+                {/volist}
+                </dl>
+            {/volist}
+        </div>
+    {/volist}
+    <dl class="row">
+        <dt class="left"></dt>
+        <dd class="right">
+            {:get_link_info('admin', 'access', 'index', array(), '提交', array('type' => 'submit', 'class' => 'submitbt', 'name' => 'bt', 'id' => 'bt'), 'input')}
+         </dd>
+    </dl>
+    </form>
+</div>
+
+{/block}

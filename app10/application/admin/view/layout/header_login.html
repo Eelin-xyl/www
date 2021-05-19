@@ -1,0 +1,26 @@
+<!DOCTYPEhtml>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=1.5,initial-scale=1">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>{$title}{:config('site_name')}</title>
+    <link rel="icon" type="image/x-icon" href="">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/login.css" />
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+    <script>
+        var API_ENV = {
+            API_URL: '{:Url("index/Api/index")}',
+            API_ProjectRoot: (window.document.location.origin + (window.document.location.pathname.substring(0, window.document.location.pathname.indexOf('index.php'))) + 'index.php/'),
+            API_STATIC: window.document.location.origin + (window.document.location.pathname.substring(0, window.document.location.pathname.indexOf('index.php'))),
+            API_FILES: 'files[]',// 文件字段
+        };
+    </script>
+    <script src="__STATIC__/admin/js/jquery-1.7.2.min.js"></script>
+    <script src="__STATIC__/admin/layui/layui.all.js"></script>
+</head>
+<body>

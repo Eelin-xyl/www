@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>试卷信息</title>
+</head>
+<body>
+<a href="{:url('index/index/teacher_index')}">返回</a>
+<div>
+   <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+      <input type="button" value="添加题目" onclick="window.location.href='{:url('/index/shijuan/shijuan_tm_add_index',['kid'=>$kid,'cid'=>$cid])}'" id="add">
+      {if $dan} 
+         <p>单选题</p> 
+         <ol>
+       {volist name="dan" id="da"}
+        <li>问题: {$da.timu}</li>
+        <P>选项:A.{$da.x1}   B.{$da.x2}   C.{$da.x3}  D.{$da.x4}</P>
+        <P>答案{$da.timu}</P>
+        <P>分数{$da.timu}</P>
+        <input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_tm_delete',['id'=>$da['id']])}'"> 
+        <p>&nbsp;</p>
+       {/volist}
+       </ol>
+       {else /} 
+       {/if}
+       {if $duo}
+       <p>多选题</p>
+         <ol>
+       {volist name="duo" id="du"}
+        <li>问题:{$du.timu}</li>
+        <P>选项:A.{$du.x1}   B.{$du.x2}   C.{$du.x3}  D.{$du.x4}</P>
+        <P>答案{$du.daan}</P>
+        <P>分数{$du.fs}</P>
+        <input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_tm_delete',['id'=>$du['id']])}'"> 
+        <p>&nbsp;</p>
+        {/volist}
+       </ol>
+       {else /}
+       {/if}
+       {if $pan}
+       <p>判断题</p> 
+         <ol>
+       {volist name="pan" id="pa"}
+        <li>问题:{$pa.timu}</li>
+        <P>答案{$pa.daan}</P>
+        <P>分数{$pa.fs}</P>
+        <input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_tm_delete',['id'=>$pa['id']])}'"> 
+        <p>&nbsp;</p>
+        {/volist}
+       </ol>
+       {else /}
+       {/if}
+       {if $tian}
+       <p>填空题</p> 
+         <ol>
+       {volist name="tian" id="ti"}
+        <li>问题:{$ti.timu}</li>
+        <P>答案{$ti.daan}</P>
+        <P>分数{$ti.fs}</P>
+        <input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_tm_delete',['id'=>$ti['id']])}'">  
+        <p>&nbsp;</p>
+        {/volist}
+       </ol>
+       {else /} 
+       {/if}
+       {if $jian}
+       <p>简答题</p> 
+         <ol>
+       {volist name="jian" id="ji"}
+        <li>问题:{$ji.timu}</li>
+        <P>答案{$ji.daan}</P>
+        <P>分数{$ji.fs}</P>
+        <input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_tm_delete',['id'=>$ji['id']])}'"> 
+        <p>&nbsp;</p>
+        {/volist}
+       </ol>
+       {else /} 
+       {/if}
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+   </div>
+   </div>
+</body>
+</html>

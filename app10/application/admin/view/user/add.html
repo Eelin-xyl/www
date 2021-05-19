@@ -1,0 +1,105 @@
+{extend name="public/base" /}
+{block name="body"}
+<div class="form">
+    <form class="layui-form" action="" method="post" >
+    <dl class="row">
+        <dt class="left">*用户名：</dt>
+        <dd class="right"><input lay-verify="required" class="input" type="text" name="username" id="username" /></dd>
+    </dl>
+    <dl class="row">
+        <dt class="left">*用户真实名：</dt>
+        <dd class="right"><input lay-verify="required" class="input" type="text" name="realname" id="realname" /></dd>
+    </dl>
+    <dl class="row">
+        <dt class="left">*用户登录密码：</dt>
+        <dd class="right">
+            <input lay-verify="required" class="input" type="password" name="password" id="password" />
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="left">*再次输入用户登录密码：</dt>
+        <dd class="right">
+            <input lay-verify="required" class="input" type="password" name="repassword" id="repassword" />
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="left">*用户所在机构：</dt>
+        <dd class="right">
+            <input lay-verify="required" value="{$orgid}" id="pid" type="hidden" name="orgid" />
+            <select lay-filter="jigou" class="select" name="pid1" id="enCodeorg">
+                <option value="0">请选择</option>
+                {volist name="org" id="vv"}
+                    <option value="{$vv['id']}">{$vv['name']}</option>
+                {/volist}
+            </select>
+         </dd>
+    </dl>
+<dl class="row">
+    <dt class="left">用户描述：</dt>
+    <dd class="right"><input  class="input" type="text" name="description" id="description" /> </dd>
+    </dl>
+    <dl class="row">
+        <dt class="left"></dt>
+        <dd class="right">
+            {:get_link_info('admin', 'user', 'add', '', '提交', array('lay-submit' => '', 'lay-filter' => "submitbt", 'class' => "submitbt layui-btn layui-btn-normal", 'type' => "", 'name' => "bt", 'id' => "bt"), 'button')}
+            </dd>
+    </dl>
+    </form>
+</div>
+
+{/block}
+{block name="foot-js"}
+<script type="text/javascript">
+    var str_arr = [];
+    if ( {$str_arr} != '') {
+        var str_arr = {$str_arr};
+    }
+    var nowOrgL = 0; //当前的机构id序号
+    $(function(){
+        layui.use(['form','layer'], function(){
+            var form = layui.form;
+            var layer = layui.layer;
+
+            form.render();
+            if (str_arr[nowOrgL]) {
+                $("#enCodeorg").val(str_arr[nowOrgL]);
+                changee($("#enCodeorg"), str_arr[nowOrgL]);
+                nowOrgL++;
+            }
+            function changee(obj, value){
+                var select = $('<select lay-filter="jigou" class="select" name="pid1"><option value="" >请选择</option></select>');
+                if (value) {
+                    $("#pid").val(value);
+                }
+                $.post('{:get_link_info('admin', 'organizationCon', 'jsnextOrg')}', {'code':value}, function(data){
+
+                    if (data.state == 'success') {
+                        obj.nextAll().remove();
+                        var html = '';
+                        for(var i=0;i<data.data.length;i++){
+                            html += '<option value="' + data.data[i].id + '">'+data.data[i].name+'</option>';
+                        }
+                        select.append(html);
+                        obj.parent().append(select);
+
+                        if (str_arr[nowOrgL]) {
+                            obj.next().val(str_arr[nowOrgL]);
+                            changee(obj.next(), str_arr[nowOrgL]);
+                            nowOrgL ++;
+                        }
+                        form.render('select');
+                    }
+                });
+            }
+            form.on('select(jigou)', function (data) {
+                changee($(data.elem), data.value);
+            });
+
+            form.on('submit(submitbt)', function () {
+                $("form.layui-form").submit();
+                return false;
+            });
+        });
+    });
+</script>
+{/block}

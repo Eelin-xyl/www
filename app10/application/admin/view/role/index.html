@@ -1,0 +1,38 @@
+{extend name="public/base" /}
+{block name="body"}
+<div class="toolbar">
+    <div class="add right">
+            {:get_link_info('admin', 'role', 'add', array(), '添加角色', array('class' => 'a_active'), 'a')}
+    </div>
+
+</div>
+<div class="list list_5">
+    <ul class="title">
+        <li>序号</li>
+        <li>角色名</li>
+        <li>角色描述</li>
+        <li>角色状态</li>
+        <li>操作</li>
+    </ul>
+    {volist name="data" id="vo"}
+    <ul>
+        <li>{$num++}</li>
+        <li>{$vo['name']}</li>
+        <li>{$vo['remark']}</li>
+        <li>{eq name="$vo['status']" value="1"} 启用 {else/}停用 {/eq}
+
+        </li>
+        <li>
+              {:get_link_info('admin', 'role', 'edit', array('id' => $vo['id']), '编辑', array(), 'a')}
+            {:get_link_info('admin', 'Access', 'index', array('id' => $vo['id']), ' | 分配该角色权限', array(), 'a')}
+        </li>
+    </ul>
+    {/volist}
+</div>
+
+{/block}
+{block name="foot-js"}
+<script type="text/javascript">
+
+</script>
+{/block}

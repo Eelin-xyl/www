@@ -1,0 +1,77 @@
+{extend name="Layout:base"/}
+{block name="title"}权限选取{/block}
+{block name="css"}
+    <link rel="stylesheet" type="text/css" href="__CSS__/rbac.css" />
+{/block}
+{block name="body"}
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td height="24" bgcolor="#353c44">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="6%" height="19" valign="bottom"><div align="center"><img src="__IMAGES__/tb.gif" width="14" height="14" /></div></td>
+                      <td width="94%" valign="bottom"><span class="header_title_text">权限分配</span></td>
+                    </tr>
+                  </table>
+                </td>
+                <td align="right" width="50%">
+                  <div align="right"><span class="STYLE1">
+                    <input type="checkbox" name="checkbox11" id="checkbox11" />
+                      全选      &nbsp;&nbsp;
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+   </td>
+</tr>
+</table>     
+<div id='wrap'>
+    <form method='post' action ="{:Url('@admin/Rbac/setPermissions')}">
+        {foreach name="node" item="v"}
+            <div class='app'>
+                <p>
+                {$v.title}<input level='1'type="checkbox" name="access[]" value='{$v.id},{$v.level}'
+                                      {switch name="v.flog" }
+                                          {case value="1" }checked='checked'/>{/case}
+                                      {/switch}
+                </p>
+                {foreach name="v.child" item='a'}
+                      <dl>
+                            <dt>  {$a.title} <input level='2'type="checkbox" name="access[]" value='{$a.id},{$a.level}'
+                                                    {switch name="a.flog" }
+                                                    {case value="1" }checked='checked'/>{/case}
+                                {/switch}
+
+                            </dt>
+                            {foreach name="a.child" item='f'}
+                                  <dd>
+                                        <span class="STYLE19">{$f.title}<input  level='3'type="checkbox" name="access[]" value='{$f.id},{$f.level}'
+                                                  {switch name="f.flog" }
+                                                       {case value="1" }checked='checked'/>{/case}
+                                                  {/switch}
+                                        </span>
+                                  </dd>
+                            {/foreach}
+                      </dl> 
+                {/foreach}
+            </div>
+        {/foreach}
+        <input type='hidden' name='role_id' value="{$role_id}" />
+        <div align="center">
+            <input type='submit' value = '确定'> 
+        </div>
+    </form>
+</div>
+{/block}
+{block name="foot-js"}
+    <script type ="text/javascript" src="__JS__/rbac.js"></script>
+{/block}

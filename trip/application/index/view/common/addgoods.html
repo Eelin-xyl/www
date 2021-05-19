@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<table width="100%" >
+  <tr>
+    <td width="20%" align="center">
+    <a href="{:url('/index/common/homepage')}">
+    <img src="__STATIC__/common/logo.jpg" width="80" height="80" />
+    </a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/pi')}">个人信息</a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/order')}">我的订单</a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/addgoods')}">添加商品</a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/charge')}">充值中心</a></td>
+  </tr>
+</table>
+<h1 align="center">添加商品</h1>
+<form method="post" action="{:url('/index/account/addgoods')}" enctype="multipart/form-data">
+<table align="center" >
+      <tr><td>
+             商品类别
+      </td></tr>
+      <tr><td>
+             <input type="radio" name="category" value="手机电脑" />手机电脑
+             <input type="radio" name="category" value="男装女装" />男装女装
+             <input type="radio" name="category" value="箱包户外" />箱包户外
+             <input type="radio" name="category" value="图书音像" />图书音像
+      </td></tr>
+      <tr><td>
+             名称
+      </td></tr>
+      <tr><td>
+             <input type="text" name="name" />    
+      </td></tr>
+      <tr><td>
+             价格
+      </td></tr>
+      <tr><td>
+             <input type="text" name="price" /> 
+      </td></tr>      
+      <tr><td>
+             数量
+      </td></tr>
+      <tr><td>
+             <input type="text" name="amount" />
+      </td></tr>
+      <tr><td>
+             图片
+      </td></tr>
+      <tr><td>
+             <input type="file" name="img" />
+      </td></tr>
+      <tr><td>
+             <input name="submit" type="submit" value="提交"/>
+      </td></tr>
+</table>
+</form>
+</body>
+</html>

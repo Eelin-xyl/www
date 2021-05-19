@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>修改题目</title>
+</head>
+
+<body>
+<a href="{:url('index/index/teacher_index')}">返回</a>
+<form name="form1" enctype="multipart/form-data" method="post" action="{:url('/index/shijuan/shijuan_t_update')}" >
+    <table width="600" border="1" align="center">
+        <tbody>
+            <tr>
+                <td height="52" colspan="2" align="center">修改题目</td>
+            </tr>
+            <tr>
+                <td align="right">题目：</td>
+                <td><input type="text" name="timu" value="{$p.timu}"></td>
+            </tr>
+            {if $p['kind']==1||$p['kind']==2}
+            <tr>
+                <td align="right">选项A：</td>
+                <td><input type="text" name="xa" value="{$p.x1}"></td>                
+            </tr>
+            <tr>
+                <td align="right">选项B：</td>
+                <td><input type="text" name="xb" value="{$p.x2}"></td>                
+            </tr>
+            <tr>
+                <td align="right">选项C：</td>
+                <td><input type="text" name="xc" value="{$p.x3}"></td>                
+            </tr>
+            <tr>
+                <td align="right">选项D：</td>
+                <td><input type="text" name="xd" value="{$p.x4}"></td>                
+            </tr>
+            {else /}
+            {/if}
+            <tr>
+                <td align="right">答案：</td>
+                <td><input type="text" name="an" value="{$p.daan}"></td>                
+            </tr>
+            <tr>
+                <td align="right">题目难度：</td>
+                <td>
+                    <input type="text" name="nan" value="{$p.nandu}">
+                </td>
+            </tr>
+            <tr>
+                <td align="right">分数：</td>
+                <td><input type="text" name="fs" value="{$p.fs}"></td>                
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" name="bt" value="确认修改" />                  
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

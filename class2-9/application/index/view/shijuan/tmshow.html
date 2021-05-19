@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+    *{
+     padding: 0;
+    margin: 0;
+  }
+/*  li{
+     list-style: none;
+     float:left;
+   }*/
+  #tab_{
+     clear: both;
+   }
+   #tab1{
+    display: none;
+  }
+     #tab2{
+    display: none;
+  }
+       #tab3{
+    display: none;
+  }
+       #tab4{
+    display: none;
+  }
+  .nav{
+   height:160px; margin:0 auto; 
+  }
+  .nav  li{
+    float:left; width: 20%;list-style: none; font-size: 35px; color: black;
+    border-radius: 15px;text-align: center; background-color: #2bcec0; 
+  }
+</style>
+<script type="text/javascript">
+  function tab(pid){
+  for (var i = 0; i < 5; i++) {
+      document.getElementById('tab'+i).style.display="none";         
+    }
+    document.getElementById('tab'+pid).style.display="block";   
+  }
+</script>
+<title>题库信息</title>
+</head>
+<body>
+<a href="{:url('index/index/teacher_index')}">返回</a>
+<div>
+   <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+      <div id="tabNav">
+      <ul class="nav nav-pills  nav-stacked" style="cursor:pointer">
+        <li role="presentation"  onclick="tab('0')">单选题</li>
+        <li role="presentation"  onclick="tab('1')" >多选题</li>
+        <li role="presentation"  onclick="tab('2')">判断题</li>
+        <li role="presentation"  onclick="tab('3')">填空题</li>
+        <li role="presentation"  onclick="tab('4')">简答题</li>
+      </ul>
+      </div>
+      <input type="button" value="添加题目" onclick="window.location.href='{:url('/index/shijuan/tk_add_index')}'" id="add">
+   <div id="tab0" align="center">
+         <h1>单选题</h1> 
+        <p>&nbsp;</p>
+       {volist name="dan" id="da"}
+        <table align="center" border="1" width="40%">
+          <tr>
+            <th>问题: {$da.timu}</th>
+            <td rowspan="7" align="center">
+              <input type="button" value="修改" onclick="window.location.href='{:url('/index/shijuan/tk_t_update_index',['pid'=>$da['pid']])}'"><br><br>
+              <input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/tk_t_delete',['pid'=>$da['pid']])}'">
+            </td>
+          </tr>
+          <tr>
+            <td>选项: A.{$da.x1}   B.{$da.x2}   C.{$da.x3}  D.{$da.x4}</td>
+          </tr>
+          <tr>
+            <td>答案: {$da.daan}</td>
+          </tr>
+          <tr>
+            <td>难度: {$da.nandu}</td>
+          </tr>
+          <tr>
+            <td>分数: {$da.fs}</td>
+          </tr>
+          <tr>
+            <td>单元: {$da.dy}</td>
+          </tr>
+          <tr>
+            <td>知识点: {$da.yaodian}</td>
+          </tr>
+        </table>
+        <p>&nbsp;</p>
+       {/volist}
+    </div>
+    <div id="tab1" align="center">
+       <h1>多选题</h1>
+       <p>&nbsp;</p>
+       {volist name="duo" id="du"}
+       <table border="1" width="40%">
+         <tr>
+           <th>问题: {$du.timu}</th>
+           <td align="center" rowspan="7">
+             <input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_t_delete',['pid'=>$du['pid']])}'"><br><br>
+             <input type="button" value="修改" onclick="window.location.href='{:url('/index/shijuan/shijuan_t_update_index',['pid'=>$du['pid']])}'">
+           </td>
+         </tr>
+         <tr>
+            <td>选项: A.{$du.x1}   B.{$du.x2}   C.{$du.x3}  D.{$du.x4}</td>
+         </tr>
+         <tr>
+            <td>答案: {$du.daan}</td>
+         </tr>
+         <tr>
+            <td>难度: {$du.nandu}</td>
+         </tr>
+         <tr>
+            <td>分数: {$du.fs}</td>
+         </tr>
+         <tr>
+            <td>单元: {$du.dy}</td>
+         </tr>
+         <tr>
+            <td>知识点: {$du.yaodian}</td>
+         </tr>
+       </table>
+       <p>&nbsp;</p>
+       {/volist}
+    </div>
+       <div id="tab2" align="center">
+       <h1>判断题</h1> 
+       <p>&nbsp;</p>
+       {volist name="pan" id="pa"}
+       <table border="1" width="40%">
+         <tr>
+           <th>问题: {$pa.timu}</th>
+           <td align="center" rowspan="7">
+              <input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_t_delete',['pid'=>$pa['pid']])}'"><br><br>
+              <input type="button" value="修改" onclick="window.location.href='{:url('/index/shijuan/shijuan_t_update_index',['pid'=>$pa['pid']])}'">
+           </td>
+         </tr>
+         <tr>
+           <td>答案: {$pa.daan}</td>
+         </tr>
+         <tr>
+           <td>难度: {$pa.nandu}</td>
+         </tr>
+         <tr>
+           <td>分数: {$pa.fs}</td>
+         </tr>
+         <tr>
+           <td>单元: {$pa.dy}</td>
+         </tr>
+         <tr>
+           <td>知识点: {$pa.yaodian}</td>
+         </tr>
+       </table>
+        <p>&nbsp;</p>
+       {/volist}
+     </div>
+        <div id="tab3" align="center">
+       <h1>填空题</h1>
+       <p>&nbsp;</p>
+       {volist name="tian" id="ti"}
+       <table border="1" width="40%">
+         <tr>
+           <th>问题: {$ti.timu}</th>
+           <td align="center" rowspan="7">
+            <input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_t_delete',['pid'=>$ti['pid']])}'"><br><br>
+            <input type="button" value="修改" onclick="window.location.href='{:url('/index/shijuan/shijuan_t_update_index',['pid'=>$ti['pid']])}'">
+           </td>
+         </tr>
+         <tr>
+            <td>答案: {$ti.daan}</td>
+        </tr>
+        <tr>
+            <td>难度: {$ti.nandu}</td>
+        </tr>
+        <tr>
+            <td>分数: {$ti.fs}</td>
+        </tr>
+        <tr>
+            <td>单元: {$ti.dy}</td>
+        </tr>
+        <tr>
+            <td>知识点: {$ti.yaodian}</td>
+        </tr>
+       </table>
+        <p>&nbsp;</p>
+       {/volist}
+     </div>
+        <div id="tab4" align="center">
+       <h1>简答题</h1> 
+       <p>&nbsp;</p>
+       {volist name="jian" id="ji"}
+       <table border="1" width="40%">
+         <tr>
+           <th>问题: {$ji.timu}</th>
+           <td align="center" rowspan="7">
+             <input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_t_delete',['pid'=>$ji['pid']])}'"><br><br>
+             <input type="button" value="修改" onclick="window.location.href='{:url('/index/shijuan/shijuan_t_update_index',['pid'=>$ji['pid']])}'">
+           </td>
+         </tr>
+         <tr>
+            <td>答案: {$ji.daan}</td>
+         </tr>
+         <tr>
+            <td>难度: {$ji.nandu}</td>
+        </tr>
+        <tr>
+            <td>分数: {$ji.fs}</td>
+        </tr>
+        <tr>
+            <td>单元: {$ji.dy}</td>
+        </tr>
+        <tr>
+            <td>知识点: {$ji.yaodian}</td>
+        </tr>
+       </table> 
+        <p>&nbsp;</p>
+       {/volist}
+     </div>
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+   </div>
+   </div>
+</body>
+</html>

@@ -1,0 +1,262 @@
+
+{extend name="public/base" /}
+{block name="head_css"}
+<link rel="stylesheet" type="text/css" href="" />
+{/block}
+{block name="body"}
+<table class="layui-table" lay-even lay-size="sm">
+    <colgroup>
+        <col width="80">
+        <col width="150">
+        <col width="50">
+    </colgroup>
+    <thead>
+        <tr>
+            <th><span>编号</span></th>
+            <th><span>一级指标</span></th>
+            <th><span>编号</span></th>
+            <th><span>二级指标</span></th>
+            <th><span>编号</span></th>
+            <th><span>三级指标</span></th>
+            <th><span>分值</span></th>
+            <th><span>评分</span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="12">1</td>
+            <td rowspan="12">发展创新(40%)</td>
+            <td rowspan="2">1</td>
+            <td rowspan="2">总体规模（4）</td>
+            <td><span>1</span></td>
+            <td><span>网络市场总交易额</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>2</span></td>
+            <td><span>网络市场主体总量</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td rowspan="3">2</td>
+            <td rowspan="3">价值贡献（6）</td>
+            <td><span>3</span></td>
+            <td><span>经济贡献度</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>4</span></td>
+            <td><span>税收贡献度</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>5</span></td>
+            <td><span>就业贡献度</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td rowspan="4">3</td>
+            <td rowspan="4">成长质量（10）</td>
+            <td><span>6</span></td>
+            <td><span>网络市场总交易额年均增长率</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>7</span></td>
+            <td><span>网络交易经济贡献年均增长率</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>8</span></td>
+            <td><span>本地特色产品交易额年均增长率</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>9</span></td>
+            <td><span>新兴龙头企业增长数量</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td rowspan="3">4</td>
+            <td rowspan="3">创新成效（20）</td>
+            <td><span>10</span></td>
+            <td><span>新经济产品服务数量</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>11</span></td>
+            <td><span>新经济产品服务的新标准</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>12</span></td>
+            <td><span>新经济产品服务的创新模式</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td rowspan="14">2</td>
+            <td rowspan="14">监管服务（40%）</td>
+            <td rowspan="4">5</td>
+            <td rowspan="4">营商环境（10）</td>
+            <td><span>13</span></td>
+            <td><span>网络市场准入便利度</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>14</span></td>
+            <td><span>市场竞争公平性</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>15</span></td>
+            <td><span>本地区特色制度创新</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>16</span></td>
+            <td><span>平台资源的跨区利用</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td rowspan="4">6</td>
+            <td rowspan="4">社会共治（10）</td>
+            <td><span>17</span></td>
+            <td><span>网商平台参与</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>18</span></td>
+            <td><span>网络市场主体自证合规</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>19</span></td>
+            <td><span>网络市场主体信用公示</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>20</span></td>
+            <td><span>消费者投诉举报满意率</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td rowspan="3">7</td>
+            <td rowspan="3">协同监管（10）</td>
+            <td><span>21</span></td>
+            <td><span>网络市场监管联席会议机制</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>22</span></td>
+            <td><span>分工协作的监管执法效能</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>23</span></td>
+            <td><span>信用监管联合惩戒有效性</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td rowspan="3">8</td>
+            <td rowspan="3">数字水平（10）</td>
+            <td><span>24</span></td>
+            <td><span>网络市场主体基础数据库</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>25</span></td>
+            <td><span>网络执法自动化水平</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>26</span></td>
+            <td><span>网络市场动态监测和通报</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td rowspan="8">3</td>
+            <td rowspan="8">综合保障（20%）</td>
+            <td rowspan="2">9</td>
+            <td rowspan="2">工作保障（4）</td>
+            <td><span>27</span></td>
+            <td><span>创建机构</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>28</span></td>
+            <td><span>创建方案</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td rowspan="3">10</td>
+            <td rowspan="3">资源保障（10）</td>
+            <td><span>29</span></td>
+            <td><span>资金资源</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>30</span></td>
+            <td><span>购买服务</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>31</span></td>
+            <td><span>持续发展</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td rowspan="3">11</td>
+            <td rowspan="3">制度保障（6）</td>
+            <td><span>32</span></td>
+            <td><span>规划计划</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>33</span></td>
+            <td><span>政策法规</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+        <tr>
+            <td><span>34</span></td>
+            <td><span>目标考核</span></td>
+            <td><span>2</span></td>
+            <td><span>2</span></td>
+        </tr>
+    </tbody>
+        
+
+</table>
+{/block}

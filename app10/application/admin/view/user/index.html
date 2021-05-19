@@ -1,0 +1,104 @@
+{extend name="public/base" /}
+{block name="body"}
+<div class="toolbar">
+    <form action="{:get_link_info('admin', 'user', 'index')}" method="get" id="cid_search">
+
+    <div class="add left">
+        <span class="a_active" style="background:#ffffff;color:#000000;">机构</span>
+        <input type="hidden" id="organization" name="organization" value="0">
+        <select class="select" name="organizationSelect" id="organizationSelect" >
+            <option value="0">可选择搜索</option>
+            {volist name="org" id="vo"}
+              <option value="{$vo['id']}">{$vo['name']}</option>
+            {/volist}
+        </select>
+        <input type="submit" name="" id="search" value="搜索">
+    </div>
+    </form>
+    <div class="add right">
+        {:get_link_info('admin', 'user', 'add', '', '添加用户', array('class' => "a_active"), 'a')}
+    </div>
+
+</div>
+<div class="list list_8">
+    <ul class="title">
+        <li>序号</li>
+        <li>用户名</li>
+        <li>用户真实名</li>
+        <li>所属机构</li>
+        <li>上次登录地址</li>
+        <li>上次登录时间</li>
+     <li>状态</li>
+        <li>操作</li>
+    </ul>
+   {volist name="data" id="vo" empty="暂时没有数据" }
+    <ul>
+        <li>{$num++}</li>
+        <li>{$vo['username']}</li>
+        <li>{$vo['realname']}</li>
+        <li>{$vo['orgname']}</li>
+        <li>{$vo['ip']}</li>
+        <li>{$vo['logintime']}</li>
+         <li>{eq name="$vo['status']" value="0"}正常{else/}未启用{/eq}</li>
+        <li>
+
+            {eq name="$vo['status']" value="1"}
+                {:get_link_info('admin', 'user', 'start', array('id' => $vo['id']), '启用', array(), 'a')}
+            {else/}
+                {:get_link_info('admin', 'user', 'edit', array('id' => $vo['id']), '编辑', array(), 'a')}
+                {:get_link_info('admin', 'user', 'delete', array('id' => $vo['id']), '&nbsp; |  &nbsp; 删除', array('onClick' => "return confirm('确定要删除该信息？')"), 'a')}
+            {/eq}
+
+        </li>
+    </ul>
+   {/volist}
+    <div id="pagination">
+    {$data->render()}
+    </div>
+</div>
+
+{/block}
+{block name="foot-js"}
+<script type="text/javascript">
+
+    var str_arr = [];
+    if ( {$str_arr} != '') {
+        var str_arr = {$str_arr};
+    }
+    console.log(str_arr);
+    var nowOrgL = 0; //当前的机构id序号
+    $(function(){
+        $('#search').change(function(){
+            $('#cid_search').submit();
+        });
+        if (str_arr[nowOrgL]) {
+            $("select[name='organizationSelect']").val(str_arr[nowOrgL]);
+            $("select[name='organizationSelect']").change();
+            nowOrgL++;
+        }
+    });
+    $('body').on('change', 'select[name="organizationSelect"]', function(){
+        code = $(this).val();
+        obj = this;
+        $("#organization").val(code);
+        $(obj).nextAll('select[name="organizationSelect"]').remove();
+        $.post('{:get_link_info('admin', 'organizationCon', 'jsnextOrg')}', {'code':code}, function(data){
+            var select = $('<select class="select" name="organizationSelect"><option value="">可选择搜索</option></select>');
+            if (data.state == 'success') {
+                for(var i=0;i<data.data.length;i++){
+                    $(select).append('<option value="' + data.data[i].id + '">'+data.data[i].name+'</option>');
+                }
+                $(obj).after(select);
+                //默认选中
+                if (str_arr[nowOrgL]) {
+                    $(select).val(str_arr[nowOrgL]);
+                   $(select).change();
+                    nowOrgL++;
+                }
+            }
+        })
+    });
+
+</script>
+{/block}
+

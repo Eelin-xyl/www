@@ -1,0 +1,136 @@
+<!--
+user jyj
+Date: 2018/6/23
+ -->
+{layout name="layout/layout_login" /}
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="/public/static/admin/js/reg.js"></script>
+	<link rel="stylesheet" type="text/css" href="";>
+</head>
+<div id="bg" class="">
+	<div class="wrap-login">
+		<div class="login clearfix" style="width: 780px;">
+			<div class="left">
+				<img src="__STATIC__/admin/images/login_logo.png" alt=""  />
+			</div>
+			<div class="right" style="width: 360px;text-align: center;">
+				<form action="{:url('/admin/Login/reg')}" method="post">
+					<div id="container">
+						<div class="register">
+							<div class="regs_title">用户注册</div>
+							<div class="reg_cell regs_cell_form"id="reg_form">
+								<div class="reg_cell">
+									<div class="reg_cell_hd">
+										<label  class="reg_label">昵称</label>
+									</div>
+									<div class="reg_cell_bd reg_cell_primary">
+										<input name="realname" class="reg_input" required=""  placeholder="请输入昵称"     type="text" value="textral">
+									</div>
+								</div>
+								<div class="reg_cell">
+									<div class="reg_cell_hd">
+										<label  class="reg_label">用户名</label>
+									</div>
+									<div class="reg_cell_bd reg_cell_primary">
+										<input name="username" class="reg_input" required="" placeholder="请输入用户名" type="text" value="text1">
+									</div>
+								</div>
+								<div class="reg_cell">
+									<div class="reg_cell_hd">
+										<label  class="reg_label">密码</label>
+									</div>
+									<div class="reg_cell_bd reg_cell_primary">
+										<input name="password" class="reg_input" required="" pattern="[\w]{6,}"  placeholder="请输入密码" type="password" value="123456">
+									</div>
+								</div>
+								<div class="reg_cell">
+									<div class="reg_cell_hd">
+										<label  class="reg_label">密码确认</label>
+									</div>
+									<div class="reg_cell_bd reg_cell_primary">
+										<input name="password2" class="reg_input" required="" pattern="[\w]{6,}"  placeholder="请再次输入密码" type="password" value="123456">
+									</div>
+								</div>
+								<div class="reg_cell">
+									<div class="reg_cell_hd">
+										<label  class="reg_label">手机号</label>
+									</div>
+									<div class="reg_cell_bd reg_cell_primary">
+										<input name="phone" class="reg_input" required=""  placeholder="请输入本人手机号"     type="text" value="18980419692">
+									</div>
+								</div>
+								<div class="reg_cell">
+									<div class="reg_cell_hd">
+										<label  class="reg_label">邮箱</label>
+									</div>
+									<div class="reg_cell_bd reg_cell_primary">
+										<input name="email" class="reg_input" required=""  placeholder="请输入邮箱"     type="text" value="1553448111@qq.com">
+									</div>
+								</div>
+								<div class="reg_btn_area" id="ssj" width="20px">
+
+								</div>
+								<div class="reg_btn_area" id="sss" width="20px">
+
+								</div>
+								<div class="reg_btn_area" id="ssq" width="20px">
+
+								</div>
+								<div>
+									<input class="reg_btn reg_btn_primary js_btn" type="submit" value="注册">
+								</div>
+								<p class="reg_cells_tips"><a href="{:url('admin/login/login')}">已有账号？去登录</a></p>
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!--
+<script type="text/javascript">
+    $("#reg_form").validates({
+        rules: {
+            username: {
+                required: true,
+            },
+            password: {
+                required: true,
+            },
+            password2: {
+                required: true,
+            },
+            email: {
+                required: true,
+            },
+            phone: {
+                required: true,
+            },
+
+        },
+        messages: {
+            username: {
+                required: "请输入用户名",
+            },
+            password: {
+                required: "请输入密码",
+            },
+            password2: {
+                required: "请再次输入密码",
+            },
+            phone: {
+                required: "请输入您的手机号",
+            },
+            email: {
+                required: "请输入你的邮箱",
+            },
+        }
+    });
+</script> -->
+</html>

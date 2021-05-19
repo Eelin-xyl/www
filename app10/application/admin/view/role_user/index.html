@@ -1,0 +1,34 @@
+{extend name="public/base" /}
+{block name="body"}
+<div class="toolbar"></div>
+<div class="list list_5">
+    <ul class="title">
+        <li>序号</li>
+        <li>用户账户</li>
+        <li>用户名</li>
+        <li>已分配角色</li>
+        <li>操作</li>
+    </ul>
+    {volist name="data" id="vo"}
+    <ul>
+        <li>{$num++}</li>
+        <li>{$vo['username']}</li>
+        <li>{$vo['realname']}</li>
+        <li>
+            {volist name="$vo['role']" id="voo"}
+                {neq name="$voo['name']" value=""}[{$voo['name']}]{/neq}
+            {/volist}
+        </li>
+        <li>
+            {:get_link_info('admin', 'RoleUser', 'edit', array('id' => $vo['userid']), '分配角色', array(), 'a')}
+        </li>
+    </ul>
+    {/volist}
+</div>
+
+{/block}
+{block name="foot-js"}
+<script type="text/javascript">
+
+</script>
+{/block}

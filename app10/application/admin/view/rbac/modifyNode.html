@@ -1,0 +1,69 @@
+{extend name="Layout:base"/}
+{block name="title"}节点管理{/block}
+{block name="body"}
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+        <td height="30">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td height="24" bgcolor="#353c44">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td>
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td width="6%" height="19" valign="bottom"><div align="center"><img src="__IMAGES__/tb.gif" width="14" height="14" /></div></td>
+                                            <td width="94%" valign="bottom"><span class="header_title_text">修改节点</span></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td align="right" width="50%">
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>  
+    <tr>
+        <td>
+            <form action="{:Url('@admin/Rbac/modifyNode')}" name="areaform" method="post">
+                <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce">
+                    <input type="hidden" name="id" value="$node['id']"/>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="form_left_title">模块名称</td>
+                        <td class="form_right_content"><input type='text' name="name" value={$node['name']}  required/></td>
+                    </tr>
+
+                    <tr>
+                        <td class="form_left_title">模块描述</td>
+                        <td class="form_right_content"><input type='text' name="title" value={$node['title']}  required/></td>
+                    </tr>
+                    <tr>
+                        <td class="form_left_title">是否开启</td>
+                        <td class="form_right_content"><input type="radio" name="status" value='1'
+                             {switch name="node.status" }
+                             {case value="1" }checked='checked' />是<input type="radio" name="status" value='0'  />否{/case}
+                             {case value="0"} />是<input type="radio" name="status" value='0' } checked='checked' />否{/case}
+                            {/switch}
+                        </td>
+                    <tr>
+                        <td class="form_left_title">排序优先</td>
+                        <td class="form_right_content"><input type='text' name="sort" value={$node['sort']} required/></td>
+                    </tr>
+                    <tr>
+                        <td height="45">&nbsp;</td>
+                         <input type='hidden' name='id' value={$node['id']} />
+                        <td><button type="submit" >提交</button></td></td>
+                    </tr>
+                </table>
+            </form>
+        </td>
+    </tr>
+</table>
+{/block}

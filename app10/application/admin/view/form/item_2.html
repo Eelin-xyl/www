@@ -1,0 +1,14 @@
+<dl class="row">
+    <dt class="left">{$info.titlename}：</dt>
+    <dd class="right">
+        {if isset($info['defvalue_arr'])}
+        {volist name="$info['defvalue_arr']" id="vo"}
+        <input lay-filter="radiochoice" lay-verify="requiredradio" class="choice {$class}" {eq name=" tablereturndata($defaultInfo, $info['titleenname'] . '.value')" value="$vo"} checked{/eq} type="radio" name="item[{$info.cid}][{$info.titleenname}][value]" title="{$vo}" id="{$info.titleenname}_{$key}" value="{$vo}" />
+        {/volist}
+        <span class="notice">{$info.hinttext}</span><br />
+        {include file="form:picinfo"}
+        {else}
+            配置信息错误
+        {/if}
+    </dd>
+</dl>

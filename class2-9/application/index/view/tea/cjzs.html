@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>成绩展示</title>
+</head>
+<body>
+<a href="{:url('index/index/teacher_index')}">返回</a>
+<div>
+   <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+     <table class="table table-default table-bordered">
+        <tr class="bg-primary">
+         <td>学生编号</td>
+         <td>学生成绩</td>
+        </tr>   
+       {volist name="cj" id="c"}
+        <tr>
+         <td>{$c.sid}</td>
+         <td>{$c.results}</td>   
+        </tr>
+       {/volist}
+     </table>
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+     {$cj|raw}
+   </div>
+   </div>
+</body>
+</html>

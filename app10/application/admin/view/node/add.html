@@ -1,0 +1,64 @@
+{extend name="public/base" /}
+{block name="body"}
+<div class="form">
+    <form class="layui-form" action="" method="post" />
+        <input hidden="hidden" type="text" name="pid" value="{$pid}" />
+        <input hidden="hidden" type="text" name="level" value="{$level}" />
+        <dl class="row">
+            <dt class="left">
+                添加{switch name="level"}
+                    {case value="1"}模块{/case}
+                    {case value="2"}控制器{/case}
+                    {default /}方法{/switch}名称：
+            </dt>
+            <dd class="right"><input lay-verify="required" class="input" type="text" name="name" id="titleenname" placeholder="名称" /></dd>
+        </dl>
+        <dl class="row">
+            <dt class="left">
+                添加{switch name="level"}
+                    {case value="1"}模块{/case}
+                    {case value="2"}控制器{/case}
+                    {default /}方法{/switch}描述：
+            </dt>
+            <dd class="right"><input lay-verify="required" class="input" type="text" name="title" id="titlename" placeholder="描述"/></dd>
+        </dl>
+        <dl class="row">
+            <dt class="left">优先排序：</dt>
+            <dd class="right"><input lay-verify="required|number" class="input" type="number" name="sort" id="titlename" value="{$sort}" /></dd>
+        </dl>
+        <dl class="row layui-form-item">
+            <dt class="left">是否开启：</dt>
+            <dd class="right">
+                <input checked="" lay-filter="nodeSwitch" type="checkbox" name="status" value="1" lay-skin="switch" lay-text="ON|OFF">
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="left"></dt>
+            <dd class="right">
+               {:get_link_info('admin', 'node', 'add', array(), '提交', array('lay-submit' => '', 'type' => '', 'lay-filter' => "submitbt", 'class' => 'submitbt layui-btn layui-btn-normal', 'name' => 'bt', 'id' => 'bt'), 'input')}
+            </dd>
+        </dl>
+    </form>
+    <script>
+        layui.use(['form','layer'], function(){
+            var form = layui.form;
+            var layer = layui.layer;
+            form.render();
+
+            form.on('switch(nodeSwitch)', function (data) {
+                if(data.elem.checked){
+                    data.elem.value = 1;
+                } else {
+                    data.elem.value = 0;
+                }
+            });
+
+            form.on('submit(submitbt)', function () {
+                $("form.layui-form").submit();
+                return false;
+            });
+        });
+    </script>
+</div>
+
+{/block}

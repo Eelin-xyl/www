@@ -1,0 +1,114 @@
+{extend name="public/base" /}
+{block name="body"}
+<div class="form">
+    <form action="" method="post" />
+    <input hidden="hidden" class="input" type="text" name="id" id="userid" value="{$data['id']}" />
+    <dl class="row">
+        <dt class="left">*用户名：</dt>
+        <dd class="right"><input class="input" type="text" name="username" id="username" value="{$data['username']}" /></dd>
+    </dl>
+    <dl class="row">
+        <dt class="left">*用户真实名：</dt>
+        <dd class="right"><input  class="input" type="text" name="realname" id="realname" value="{$data['realname']}" /></dd>
+    </dl>
+    <dl class="row">
+        <dt class="left">是否重置密码</dt>
+        <dd class="right">
+            <input type="radio" name="resetpwd" value="0" checked="checked">否
+            <input type="radio" name="resetpwd" value="1" >是
+        </dd>
+    </dl>
+    <dl class="row passreset" style="display:none">
+        <dt class="left">*用户登录密码：</dt>
+        <dd class="right">
+            <input  class="input" type="password" name="password" id="password" />
+        </dd>
+    </dl>
+    <dl class="row passreset" style="display:none">
+        <dt class="left">*再次输入用户登录密码：</dt>
+        <dd class="right">
+            <input  class="input" type="password" name="repassword" id="repassword" />
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="left">*用户所在机构：</dt>
+        <dd class="right">
+            <input type="hidden" id="searchorganization" name="orgid" value="0" >
+            <select class="select" name="organization1" id="organization1" >
+                <option value="0">请选择</option>
+                {volist name="orglist" id="vo"}
+                    <option value="{$vo.id}">{$vo.name}</option>
+                {/volist}
+            </select>
+         </dd>
+    </dl>
+    <dl class="row">
+        <dt class="left">用户描述：</dt>
+        <dd class="right"><input  class="input" type="text" name="description" id="description" value="{$data['description']}" /> </dd>
+    </dl>
+    <dl class="row">
+        <dt class="left">上次修改时间：</dt>
+        <dd class="right"><input  class="input" type="text" name="time" id="time" value="{$data['timemodified']}" readonly="readonly" /> </dd>
+    </dl>
+    <dl class="row">
+        <dt class="left"></dt>
+        <dd class="right">
+            {:get_link_info('admin', 'user', 'edit', '', '提交', array('class' => "submitbt", 'name' => 'bt', 'id' => 'bt'), 'submit')}
+        </dd>
+    </dl>
+    </form>
+</div>
+
+{/block}
+{block name="foot-js"}
+<script type="text/javascript">
+    $(document).ready(function(){
+        if ($("input[name='resetpwd']").val() == "0") {
+            $(".passreset").css('display', 'none');
+        } else {
+            $(".passreset").css('display', 'block');
+        }
+        $("input[name='resetpwd']").click(function(){
+            if ($(this).val() == "1") {
+                $(".passreset").css('display', 'block');
+            } else {
+                $(".passreset").css('display', 'none');
+            }
+        });
+    });
+
+    var str_arr = [];
+    if ( {$str_arr} != '') {
+        var str_arr = {$str_arr};
+    }
+    var nowOrgL = 0; //当前的机构id序号
+
+    $('body').on('change', 'select[name="organization1"]', function(){
+        code = $(this).val();
+        obj = this;
+        $("#searchorganization").val(code);
+        $.post("{:get_link_info('admin', 'organizationCon', 'jsnextOrg')}", {'code':code}, function(data){
+            var select = $('<br /><select class="select" name="organization1"><option value="">请选择</option></select>');
+            if (data.state == 'success') {
+                $(obj).nextAll('select[name="organization1"]').remove();
+                for(var i=0;i<data.data.length;i++){
+                    $(select).append('<option value="' + data.data[i].id + '">'+data.data[i].name+'</option>');
+                }
+                $(obj).after(select);
+                //默认选中
+                if (str_arr[nowOrgL]) {
+                    $(select).val(str_arr[nowOrgL]);
+                   $(select).change();
+                    nowOrgL ++;
+                }
+            }
+        })
+    });
+    if (str_arr[nowOrgL]) {
+        $("select[name='organization1']").val(str_arr[nowOrgL]);
+        $("select[name='organization1']").change();
+        nowOrgL ++;
+    }
+
+</script>
+{/block}

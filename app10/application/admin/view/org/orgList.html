@@ -1,0 +1,58 @@
+{extend name="public/base" /}
+{block name="body"}
+<div class="toolbar">
+    <div class="add left">
+        <ul calss="navigation_bar">
+            <li>
+            {neq name=":get_link_info('admin', 'organizationCon', 'nextList')" value=""}
+                <a href="{:url('nextList', array('pid' => $ppid))}">根</a>
+            {else/}
+                根
+            {/neq}
+            >>
+            {volist name="navigation_bar", id="voo"}
+                {neq name=":get_link_info('admin', 'organizationCon', 'nextList')" value=""}
+                    <a href="{:url('nextList', array('pid' => $voo['id']))}">{$voo['name']}</a>{else/}
+                    {$voo['name']}
+                {/neq}
+                >>
+            {/volist}
+            </li>
+        </ul>
+    </div>
+    <div class="add right">
+        {:get_link_info('admin', 'organizationCon', 'addOrg', array('pid' => $pid), '添加机构', array('class' => 'a_active'), 'a')}
+    </div>
+
+</div>
+<div class="list list_5">
+    <ul class="title">
+        <li>序号</li>
+        <li>机构编码</li>
+        <li>机构名称</li>
+        <li>机构级别</li>
+        <li>操作</li>
+    </ul>
+    {volist name="orgdata" id="vo"}
+    <ul>
+        <li>{$num++}</li>
+        <li>{$vo['org_code']}</li>
+        <li>{$vo['name']}</li>
+        <li>{$org_type_list[$vo.type]}</li>
+        <li>
+            <!-- {:get_link_info('admin', 'organizationCon', 'showppt', array('orgid' => $vo['id']), '扶贫汇报 | ', array('target' => '_blank'), 'a')} -->
+            {if ($vo['haschild'])}
+            {:get_link_info('admin', 'organizationCon', 'nextList', array('pid' => $vo['id']), ' 管理子机构 | ', array('id' => 'mn'), 'a')}
+            {/if}
+            {:get_link_info('admin', 'organizationCon', 'edit', array('id' => $vo['id']), ' 编辑 |', array(), 'a')}
+            {:get_link_info('admin', 'organizationCon', 'delete', array('id' => $vo['id'], 'pid' => $vo['pid']), ' 删除', array('onClick' => "return confirm('确定要删除该信息？')"), 'a')}
+
+            {:get_link_info('admin', 'user', 'add', array('orgid' => $vo['id']), '| 添加用户', array(), 'a')}
+        </li>
+    </ul>
+    {/volist}
+</div>
+
+{/block}
+{block name="foot-js"}
+{/block}

@@ -1,0 +1,33 @@
+ <!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>创建试卷</title>
+</head>
+<body>
+<a href="{:url('index/index/teacher_index')}">返回</a>
+<form name="form1" enctype="multipart/form-data" method="post" action="{:url('/index/shijuan/shijuan_add')}" >
+    <table width="600" border="1" align="center">
+        <tbody>
+            <tr>
+                <td height="52" colspan="2" align="center">创建试卷</td>
+            </tr>
+            <tr>
+                <td align="right">试卷名称：</td>
+                <td><input type="text" name="shijuan" ></td>
+            </tr>
+            <tr>
+                <td align="right">课堂编号：</td>
+                <td><input type="text" name="cid" ></td>                
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" name="bt" value="确认创建" />                  
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>添加学生</title>
+<style>
+input{
+  border: 1px solid #ccc; 
+  padding: 7px 0px;
+  border-radius: 3px; 
+  padding-left:5px; 
+    }
+</style>
+</head>
+<body>
+<a href="{:url('index/index/admin_index')}" style="float: left;">返回</a>
+<form name="form1" enctype="multipart/form-data" method="post" action="{:url('/index/admin/course_s_add')}" >
+    <table width="600" border="1" align="center">
+        <tbody>
+            <tr>
+                <td height="52" colspan="2" align="center">添加学生</td>
+            </tr>
+            <tr>
+                <td width="159" align="right">学生名字：</td>
+                <td width="425">
+                    <input type="text" name="student" >
+                </td>
+            </tr>
+            <tr>
+                <td align="right">学生编号：</td>
+                <td><input type="text" name="sid" ></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" name="bt" value="添加" />                  
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

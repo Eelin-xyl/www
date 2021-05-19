@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>改卷</title>
+</head>
+
+<body>
+<a href="{:url('index/shijuan/shijuan_a_xscj_index')}">返回</a>
+<div align="center">
+<input type="button" value="成绩修改" onclick="window.location.href='{:url('/index/admin/shijuan_cj_xg_index',['aid'=>$aid])}'" id="add">      
+<p>&nbsp;</p>
+<form name="form1" enctype="multipart/form-data" method="post" action="" >
+    <table width="600" border="1" align="center">
+        <tbody>
+            <tr>
+                <td height="52" colspan="2" align="center">答卷</td>
+            </tr>
+            <tr>
+                <td width="159" align="right">考卷编号：</td>
+                <td width="425">{$aid}</td>
+            </tr>
+            {foreach $daan as $key=>$d }
+            <tr>
+                <td width="159" align="right">第{$key+1}题答案：</td>
+                <td width="425">{$d}</td>
+            </tr>
+            {/foreach}
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

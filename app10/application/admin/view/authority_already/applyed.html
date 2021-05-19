@@ -1,0 +1,75 @@
+{extend name="public/base" /}
+{block name="head_css"}
+<link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/appling.css" />
+{/block}
+{block name="body"}
+<div>
+    <div>
+        <a>全部</a>
+        <a>已通过</a>
+        <a>未通过</a>
+    </div>
+    <div>
+        <input placeholder="输入关键字搜索" type="text" id="keywords" />
+        <button id="search">搜索
+        </button>
+    </div>
+</div>
+<div class="list list_7">
+    <ul>
+        <li>申请单位</li>
+        <li>发展创新</li>
+        <li>监管服务</li>
+        <li>综合保障</li>
+        <li>总得分</li>
+        <li>评估结果</li>
+        <li>操作</li>
+    </ul>
+
+    <ul>
+        <li>申请单位1</li>
+        <li>40</li>
+        <li>40</li>
+        <li>20</li>
+        <li>100</li>
+        <li>通过</li>
+        <li>
+            <a href="{:url('show')}">查看报告</a>
+        </li>
+    </ul>
+    <ul>
+        <li>申请单位2</li>
+        <li>40</li>
+        <li>20</li>
+        <li>10</li>
+        <li>70</li>
+        <li>不通过</li>
+        <li>
+            <a href="{:url('show')}">查看报告</a>
+        </li>
+    </ul>
+    <ul>
+        <li>申请单位3</li>
+        <li>35</li>
+        <li>40</li>
+        <li>20</li>
+        <li>95</li>
+        <li>通过</li>
+        <li>
+            <a href="{:url('show')}">查看报告</a>
+    </ul>
+    <ul>
+        <li>申请单位4</li>
+        <li>40</li>
+        <li>30</li>
+        <li>20</li>
+        <li>90</li>
+        <li>通过</li>
+        <li>
+            <a href="{:url('show')}">查看报告</a>
+        </li>
+    </ul>
+
+</div>
+{$info->render()}
+{/block}

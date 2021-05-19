@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+    *{
+     padding: 0;
+    margin: 0;
+  }
+/*  li{
+     list-style: none;
+     float:left;
+   }*/
+  table{
+   border-style:dotted;
+}
+  #tab_{
+     clear: both;font-size: 20px;
+   }
+   #tab1{
+    display: none;font-size: 20px;
+  }
+     #tab2{
+    display: none;font-size: 20px;
+  }
+       #tab3{
+    display: none;font-size: 20px;
+  }
+       #tab4{
+    display: none;font-size: 20px;
+  }
+       #tab5{
+    display: none;font-size: 20px;
+  }
+  .nav{
+   height:160px; margin:0 auto; 
+  }
+  .nav  li{
+    float:left; width: 16.35%;list-style: none; font-size: 35px; color: white;
+    border-radius: 15px;text-align: center; background-color: #808080; 
+
+  }
+  .teacheradd{
+  width:  120px; 
+  height: 40px; 
+  border-width: 0px; 
+  border-radius: 3px; 
+  background: #1E90FF; 
+  cursor: pointer; 
+  outline: none; 
+  font-family: Microsoft YaHei; 
+  color: white; 
+  font-size: 17px; 
+  }
+  .studentadd{
+  width:  120px; 
+  height: 40px; 
+  border-width: 0px; 
+  border-radius: 3px; 
+  background: #1E90FF; 
+  cursor: pointer; 
+  outline: none; 
+  font-family: Microsoft YaHei; 
+  color: white; 
+  font-size: 17px; 
+  }
+  .courseadd{
+  width:  120px; 
+  height: 40px; 
+  border-width: 0px; 
+  border-radius: 3px; 
+  background: #1E90FF; 
+  cursor: pointer; 
+  outline: none; 
+  font-family: Microsoft YaHei; 
+  color: white; 
+  font-size: 17px; 
+  }
+  .testadd{
+  width:  120px; 
+  height: 40px; 
+  border-width: 0px; 
+  border-radius: 3px; 
+  background: #1E90FF; 
+  cursor: pointer; 
+  outline: none; 
+  font-family: Microsoft YaHei; 
+  color: white; 
+  font-size: 17px; 
+  }
+input{
+
+  border: 1px solid #ccc; 
+  padding: 7px 0px;
+  border-radius: 3px; 
+  padding-left:5px; 
+    
+}
+</style>
+<script type="text/javascript">
+ 	function tab(pid){
+ 	for (var i = 0; i < 6; i++) {
+ 	    document.getElementById('tab'+i).style.display="none";         
+ 		}
+ 		document.getElementById('tab'+pid).style.display="block";		
+ 	}
+</script>
+<title>管理员界面</title>
+</head>
+<body background="static/index/back.jpg">
+<h1 align="center">管理员页面</h1><br/>
+<div id="tanContainer">
+<div id="tabNav">
+    
+<ul class="nav nav-pills  nav-stacked" style="cursor: pointer;">
+  <li role="presentation"  onclick="tab('0')">教师管理</li>
+  <li role="presentation"  onclick="tab('1')" >学生管理</li>
+  <li role="presentation"  onclick="tab('2')">课堂管理</li>
+  <li role="presentation"  onclick="tab('3')">题库管理</li>
+  <li role="presentation"  onclick="tab('4')">试卷管理</li>
+  <li role="presentation"  onclick="tab('5')">考卷管理</li> 
+</ul>
+</div>
+<a href="{:url('index/index/out_login_index')}" style="float:left" >返回到登陆页面</a>
+<div id="tab_" align="center">
+   <div id="tab0">
+   <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+     <input type="button" class="teacheradd" value="添加教师用户" onclick="window.location.href='{:url('/index/admin/teacher_add_index')}'" id="add">
+     <table class="table table-default table-bordered">
+        <tr class="bg-primary">
+         <td width="150px">教师编号</td>
+         <td width="150px">教师姓名</td>
+         <td width="150px">教师性别</td>
+         <td width="150px">管理课堂</td>
+        </tr>
+             
+       {volist name="tea" id="t"}
+        <tr>
+         <td>{$t.tid}</td>
+         <td>{$t.teacher}</td>
+         <td>{$t.t_sex}</td>
+         <td>{$t.cname}</td>
+         <td colspan="2"><input type="button" value="删除" onclick="window.location.href='{:url('/index/admin/teacher_delete',['user'=>$t['t_user']])}'"></td>
+         <td><input  type="button" value="修改" onclick="window.location.href='{:url('/index/admin/teacher_update_index',['user'=>$t['t_user']])}'"></td>     
+        </tr>
+       {/volist}
+     </table>
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+     {$tea|raw}
+   </div>
+   </div>
+   <div id="tab1">
+      <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+     <table class="table table-default table-bordered">
+        <tr class="bg-primary">
+         <td width="150px">学生编号</td>
+         <td width="150px">学生姓名</td>
+         <td width="150px">学生性别</td>
+         <td>已选课程</td>
+        </tr>
+        <input type="button" class="studentadd" value="添加学生用户" onclick="window.location.href='{:url('/index/admin/student_add_index')}'" id="add">     
+       {volist name="stu" id="s"}
+        <tr>
+         <td>{$s.sid}</td>
+         <td>{$s.student}</td>
+         <td>{$s.s_sex}</td>
+         <td>{$s.cid}</td>
+         <td colspan="2"><input type="button" value="删除" onclick="window.location.href='{:url('/index/admin/student_delete',['user'=>$s['s_user']])}'"></td>
+         <td><input type="button" value="修改" onclick="window.location.href='{:url('/index/admin/student_update_index',['user'=>$s['s_user']])}'"></td>     
+        </tr>
+       {/volist}
+     </table>
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+     {$stu|raw}
+   </div>
+   </div>
+   <div id="tab2">
+         <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+     <table class="table table-default table-bordered">
+        <tr class="bg-primary">
+         <td width="150px">课程编号</td>
+         <td width="150px">课程名</td>
+         <td width="150px">课程人数</td>
+         <td width="150px">任课老师</td>
+        </tr>
+        <input type="button" class="courseadd" value="添加课程" onclick="window.location.href='{:url('/index/admin/course_add_index')}'" id="add">     
+       {volist name="cour" id="c"}
+        <tr>
+         <td>{$c.cid}</td>
+         <td>{$c.cname}</td>
+         <td>{$c.number}</td>
+         <td>{$c.teacher}</td>
+         <td><input type="button" value="删除" onclick="window.location.href='{:url('/index/admin/course_delete',['cid'=>$c['cid']])}'"></td>
+         <td><input type="button" value="详细界面" onclick="window.location.href='{:url('/index/admin/course_update_index',['cid'=>$c['cid']])}'"></td>     
+        </tr>
+       {/volist}
+     </table>
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+     {$stu|raw}
+   </div>
+   </div>
+      <div id="tab3">
+         <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+     <table class="table table-default table-bordered">
+        <tr class="bg-primary">
+         <td width="150px">课程编号</td>
+         <td width="150px">课程名</td>
+        </tr>  
+       {volist name="cour" id="c1"}
+        <tr>
+         <td>{$c1.cid}</td>
+         <td>{$c1.cname}</td>
+         <td><input type="button" value="详细界面" onclick="window.location.href='{:url('/index/shijuan/a_tk_show_index',['cid'=>$c1['cid']])}'"></td>     
+        </tr>
+       {/volist}
+     </table>
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+     {$cour|raw}
+   </div>
+   </div>
+     <div id="tab4">
+         <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+     <table class="table table-default table-bordered">
+        <tr class="bg-primary">
+         <td width="150px">试卷编号</td>
+         <td width="150px">试卷名称</td>
+        </tr>
+        <input type="button" class="testadd" value="添加试卷" onclick="window.location.href='{:url('/index/shijuan/shijuan_a_add_index')}'" id="add">     
+       {volist name="sj" id="j"}
+        <tr>
+         <td>{$j.kid}</td>
+         <td>{$j.shijuan}</td>
+         <td><input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_delete',['kid'=>$j['kid']])}'"></td>
+         <td><input type="button" value="详细界面" onclick="window.location.href='{:url('/index/shijuan/a_shijuan_index',['kid'=>$j['kid']])}'"></td>     
+        </tr>
+       {/volist}
+     </table>
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+     {$sj|raw}
+   </div>
+   </div>
+        <div id="tab5">
+      <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+     <table class="table table-default table-bordered">
+        <tr class="bg-primary">
+         <td width="150px">试卷编号</td>
+         <td width="150px">试卷名称</td>
+        </tr>    
+       {volist name="sj" id="s"}
+        <tr>
+         <td>{$s.kid}</td>
+         <td>{$s.shijuan}</td>
+         <td><input type="button" value="查看答卷" onclick="window.location.href='{:url('/index/shijuan/shijuan_a_xscj_index',['kid'=>$s['kid'],])}'"></td>     
+        </tr>
+       {/volist}
+     </table>
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+     {$re|raw}
+   </div>
+   </div>
+ </div>
+</div>
+</body>
+</html>

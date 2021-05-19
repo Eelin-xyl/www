@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* .left{float:left;}
+.right{float:right;} */
+
+.progress-bar {
+    border: 1px solid #e6e6e6;
+}
+.grid-item {
+    padding: 10px;
+    height: 80px;
+    line-height: 70px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+}
+.grid-item.active{
+    /*background-color: #1E9FFF!important;*/
+    color: red;
+}
+.grid-item.active i{ color: red; }
+.grid-item i{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 50px;
+    color: #438eb9;
+    margin-right: 10px;
+    display: inline-block;
+    height: 70px;
+}
+.grid-item h3{
+    position: absolute;
+    top: 12px;
+    left: 36%;
+    font-size: 24px;
+    padding-left: 60px;
+}
+.grid-item .line{
+    position: absolute;
+    top: 50%;
+    height: 0px;
+    border-bottom: 1px dotted #438eb9;
+    width: 35%;
+    display: block;
+}
+.grid-item .line.r{right: 0;}
+.grid-item .line.l{left: 0;}
+#app-rating, .progress-bar {
+    margin-bottom: 10px;
+}
+#apply-assessment section.wrap-box {
+    display: none;
+}
+
+
+
+/* 添加指标项 assess_mange/add.html start */
+#add-item-form .btn-arr {
+    margin-left: 200px;
+    width: 200px;
+}
+#del-item i, #add-item i{
+    margin-right: 0;
+}
+/* 添加指标项 assess_mange/add.html end */

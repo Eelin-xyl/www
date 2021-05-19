@@ -1,0 +1,17 @@
+
+<input type="hidden" value="{$info.needpic}" class="needpic" name="item[{$info.cid}][{$info.titleenname}][needpic]" />
+{if $info.needpic == 1}
+<div class="picbox">
+    <span class="notice">上传图片说明： {$info.picinfo}</span><br />
+    <div class="add_pic_div">
+        <div class="filesbtn">上传图片</div>
+        <input type="hidden" lay-verify="ishavepic" class="input" name="item[{$info.cid}][{$info.titleenname}][piclist]" value="{if !empty($defaultInfo)}
+        {if !empty($defaultInfo[$info['titleenname']]['piclist'])}
+            <?php
+                echo $defaultInfo[$info['titleenname']]['piclist'];
+            ?>
+        {/if}
+    {/if}" />
+    </div>
+</div>
+{/if}

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<table width="100%" >
+  <tr>
+    <td width="20%" align="center">
+    <a href="{:url('/index/common/homepage')}">
+    <img src="__STATIC__/common/logo.jpg" width="80" height="80" />
+    </a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/account/gologin')}">登陆</a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/order')}">我的订单</a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/addgoods')}">添加商品</a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/charge')}">充值中心</a></td>
+  </tr>
+</table>
+<h1 align="center" >登录</h1>
+<p align="center" >&nbsp;</p>
+<form method="post" action="{:url('/index/account/login')}">
+<table align="center" >
+  <tr>
+    <td>账号</td>
+  </tr>
+  <tr>
+    <td><input name="uid" type="text" /></td>
+  </tr>
+  <tr>
+    <td>密码</td>
+  </tr>
+  <tr>
+    <td><input name="password" type="password" /></td>
+  </tr>
+  <tr>
+    <td>
+    <input name="login" type="submit" value="登录" />
+    </td>
+  </tr>
+  <tr>
+    <td><a href="{:url('/index/account/goregister')}" >注册一个账号</a></td>
+  </tr>
+</table>
+</form>
+</body>
+</html>

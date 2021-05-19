@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<table width="100%" >
+  <tr>
+    <td rowspan="2" widtth="240" align="center">
+    <a href="{:url('/index/common/homepage')}">
+    <img src="__STATIC__/common/logo.jpg" width="80" height="80" />
+    </a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/pi')}">{$user}</a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/order')}">我的订单</a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/addgoods')}">添加商品</a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/charge')}">充值中心</a></td>
+  </tr>
+  <tr>
+    <td colspan="4" align="center">
+      <input type="text" name="searchtext" size="60" />      
+      <input type="submit" name="search" value="搜索"/>
+    </td>
+  </tr>
+</table>
+
+<br />
+<br />
+<table align="center" width="90%"><tr><td width="45%">
+
+
+<table align="center">
+{volist name="ginfo" id="vo"}
+  <tr align="center">
+    <td>
+      <img src="__STATIC__{$vo.image}" width="300" height="400"/>
+    </td>
+  </tr>
+  <tr align="center">
+    <td>
+      {$vo.name}
+    </td>
+  </tr>
+  <tr align="center">
+    <td>
+      产地：{$vo.origin}
+    </td>
+  </tr>
+  <tr align="center">
+    <td>
+      价格：{$vo.price}
+    </td>
+  </tr>
+  <tr align="center">
+    <td>
+      销量：{$vo.sales}
+    </td>
+  </tr>
+  <tr align="center">
+    <td>
+      库存：{$vo.amount}
+    </td>
+  </tr>
+  <tr align="center">
+    <td>
+      <a href="{:url('/index/shop/shop', ['sid' => $vo['uid']])}">{$vo.sname}</a>
+    </td>
+  </tr>
+  <tr align="right">
+    <td>
+      <a href="{:url('/index/common/addcart', ['gid' => $vo['gid']])}">
+      <input type="button" value="加入购物车" />
+      </a>
+    </td>
+  </tr>
+{/volist}
+</table>
+</td>
+
+<td width="45%" valign="top">
+<h1 align="center">评论</h1>
+<p align="center">&nbsp;</p>
+<table width="70%" align="center" border="1">
+  <tr>
+    <th width="80%">内容</th>
+    <th width="20%">时间</th>
+  </tr>
+  {$dis}
+{volist name="cinfo" id="vo"}
+  <tr>
+    <td align="center">{$vo.comment}</td>
+    <td align="center">{$time = date('Y-m-d H:i:s', $vo.ctime)}</td>
+  </tr>
+{/volist}
+</table>
+
+</td></tr></table>
+
+</body>
+</html>

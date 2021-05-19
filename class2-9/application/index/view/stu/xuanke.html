@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>选课界面</title>
+</head>
+<body>
+<a href="{:url('index/index/student_index')}">返回</a>
+<div>
+   <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+     <table class="table table-default table-bordered" align="center" width="80%" border="1">
+        <tr class="bg-primary">
+         <td><strong>课程编号</strong></td>
+         <td><strong>课程姓名</strong></td>
+         <td><strong>任课老师</strong></td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+       {volist name="cour" id="c"}
+        <tr>
+         <td>{$c.cid}</td>
+         <td>{$c.cname}</td>
+         <td>{$c.teacher}</td> 
+         <td><input type="button" value="选课" onclick="window.location.href='{:url('/index/student/student_course_add',['cid'=>$c['cid']])}'" id="add"></td>   
+        </tr>
+       {/volist}
+     </table>
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+     {$cour|raw}
+   </div>
+   </div>
+</body>
+</html>

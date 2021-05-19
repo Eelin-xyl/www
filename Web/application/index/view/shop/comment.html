@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<table width="100%" >
+  <tr>
+    <td rowspan="2" widtth="240" align="center">
+    <a href="{:url('/index/common/homepage')}">
+    <img src="__STATIC__/common/logo.jpg" width="80" height="80" />
+    </a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/pi')}">个人信息</a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/order')}">我的订单</a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/addgoods')}">添加商品</a></td>
+    <td widtth="240" align="center"><a href="{:url('/index/common/charge')}">充值中心</a></td>
+  </tr>
+  <tr>
+    <td colspan="4" align="center">
+      <input type="text" name="searchtext" size="60" />      
+      <input type="submit" name="search" value="搜索"/>
+    </td>
+  </tr>
+</table>
+
+<br />
+<br />
+<table align="center">
+{volist name="cinfo" id="vo"}
+  <tr align="center" width="70%">
+    <td width="35%">
+      <a href="{:url('/index/shop/goods', ['gid' => $vo['gid']])}">
+        <img src="__STATIC__{$vo.image}" width="300" height="400"/>
+      </a>
+    </td>
+    <td>
+      <form method="post" action="{:url('/index/common/comment', ['oid' => $vo['oid']])}">
+        <p>
+          <textarea name="comment" cols="50" rows="12"></textarea>
+        </p>
+        <p>
+          <input name="submit" type="submit" value="提交" />
+        </p>     
+      </form>
+    </td>
+  </tr>
+  <tr align="center">
+    <td>
+      <h2>{$vo.name}</h2>
+    </td>
+    <td></td>
+  </tr>
+{/volist}
+</table>
+
+
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+{extend name="Layout:base" /}
+{block name="title"}角色管理{/block}
+{block name="body"}
+<link href="__CSS__/bootstrap3.css" rel="stylesheet">
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+  <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+    <td height="24" bgcolor="#353c44"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+      <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+        <td width="6%" height="19" valign="bottom"><div align="center"><img src="__IMAGES__/tb.gif" width="14" height="14" /></div></td>
+        <td width="94%" valign="bottom"><span class="header_title_text">角色管理</span></td>
+        </tr>
+      </table></td>
+      <td align="right" width="50%"><div align="right"><img src="__IMAGES__/add.gif" width="10" height="10" />  <span class="header_title_text"><a href="{:Url('@admin/Rbac/addRole')}" title="添加新的角色"> 添加</a>&nbsp;</span></div></td>
+      </tr>
+    </table></td>
+    </tr>
+  </table></td>
+  </tr>
+
+      <table class="table table-bordered table-hover">
+        <thead class="">
+        <tr>
+          <th class="text-center">角色名称</th>
+          <th class="text-center">是否开启</th>
+          <th class="text-center">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {volist name='roles' id='v'}
+        <tr>
+          <td align="center">{$v.name}</td>
+          <td align="center" >{switch name="v.status"}
+            {case value="1"}是{/case}
+            {case value="0"}否{/case}
+            {default /}否
+            {/switch}</td>
+          <td align="center">
+            <a href="{:Url('@admin/Rbac/setPermissions',array('id'=>$v['id']))}" class="btn btn-primary btn-sm shiny">
+              <i class="fa fa-edit"></i> 配置权限
+            </a>
+            <a href="{:Url('@admin/Rbac/modifyRole',array('id'=>$v['id']))}" class="btn btn-primary btn-sm shiny">
+              <i class="fa fa-edit"></i> 修改
+            </a>
+            <a href="#" onClick="warning('确实要删除吗','{:url('delRole',array('id'=>$v['id']))}')" class="btn btn-danger btn-sm shiny">
+              <i class="fa fa-trash-o"></i> 删除
+            </a>
+          </td>
+        </tr>
+        {/volist}
+        </tbody>
+      </table>
+  {$roles->render()}
+  </table>
+<script src="__JS__/beyond.js"></script>
+</table>
+{/block}
+{block name="foot-js"}
+    <script type ="text/javascript" src="__JS__/deleteFirm.js"/>
+{/block}

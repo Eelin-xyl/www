@@ -1,0 +1,8 @@
+<dl class="row">
+    <dt class="left">{$info.titlename}：</dt>
+    <dd class="right">
+        <input lay-verify="required" class="input {$class}" rel="text" type="text" name="item[{$info.cid}][{$info.titleenname}][value]" id="{$info.titleenname}" value="{$defaultInfo ? $defaultInfo[$info['titleenname']]['value'] : $info.defvalue}" />
+        <span class="notice">{$info.hinttext}</span><br />
+        {include file="form:picinfo"}
+    </dd>
+</dl>

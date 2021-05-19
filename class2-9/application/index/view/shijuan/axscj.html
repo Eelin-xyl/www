@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>学生成绩信息</title>
+</head>
+<body>
+<a href="{:url('index/index/admin_index')}">返回</a>
+<div>
+   <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+     <table class="table table-default table-bordered" align="center" width="40%">
+        <tr class="bg-primary">
+         <td><strong>学生编号</strong></td>
+         <td><strong>学生姓名</strong></td>
+         <td><strong>考试成绩</strong></td>
+         <td><strong>操作</strong></td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+       {volist name="re" id="r"}
+        <tr>
+         <td>{$r.sid}</td>
+         <td>{$r.student}</td>
+         <td>{$r.results}</td>
+         <td><input type="button" value="查看答卷" onclick="window.location.href='{:url('/index/admin/shijuan_dj_ck_index',['aid'=>$r['aid']])}'"></td>             
+        </tr>
+       {/volist}
+     </table>
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+     {$re|raw}
+   </div>
+   </div>
+</body>
+</html>

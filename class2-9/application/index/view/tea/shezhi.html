@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>用户注册</title>
+<script>
+function PreviewImage(imgFile)
+{
+    var filextension=imgFile.value.substring(imgFile.value.lastIndexOf("."),imgFile.value.length);
+    filextension=filextension.toLowerCase();
+    if ((filextension!='.jpg')&&(filextension!='.gif')&&(filextension!='.jpeg')&&(filextension!='.png')&&(filextension!='.bmp'))
+    {
+        alert("对不起，系统仅支持标准格式的照片，请您调整格式后重新上传，谢谢 !");
+        imgFile.focus();
+    }
+    else
+    {
+        var path;
+        if(document.all)//IE
+        {
+            imgFile.select();
+            path = document.selection.createRange().text;
+            document.getElementById("imgPreview").innerHTML="";
+            document.getElementById("imgPreview").style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src=\"" + path + "\")";//使用滤镜效果      
+        }
+        else//FF
+        {
+            path=window.URL.createObjectURL(imgFile.files[0]);// FF 7.0以上
+            //path = imgFile.files[0].getAsDataURL();// FF 3.0
+            document.getElementById("imgPreview").innerHTML = "<img id='img1' width='120px' height='100px' src='"+path+"'/>";
+            //document.getElementById("img1").src = path;
+        }
+    }
+}
+</script>
+</head>
+<body>
+<a href="{:url('index/index/teacher_index')}">返回</a>
+<form name="form1" enctype="multipart/form-data" method="post" action="{:url('/index/Teacher/teacher_update')}" >
+    <table width="600" border="1" align="center">
+        <tbody>
+            <tr>
+                <td height="52" colspan="2" align="center">用户信息</td>
+            </tr>
+            <tr>
+                <td align="right">昵称：</td>
+                <td><input type="text" name="username" value="{$t.teacher}"></td>
+            </tr>
+            <tr>
+                <td align="right">头像：</td>
+                <td>
+                <br />
+                <div id="imgPreview" style='width:120px; height:100px;'>
+                <img id="img1" src="__STATIC__{$t.pic}" width="120" height="100" />
+                </div>
+                <input type="file" name="image" onchange='PreviewImage(this)' value="" >
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" name="bt" value="修改" />                  
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

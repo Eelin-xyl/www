@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{block name="title"}管理平台{/block}</title>
+        <link rel="shortcut icon" type="image/x-icon" href="'__IMAGES__/favicon.ico" />
+        <link type ="text/css" rel="stylesheet" href="__CSS__/layout.css"/>
+        <script type="text/javascript" src="__JS__/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="__JS__/layout.js"></script>
+        <script type="text/javascript">
+            var JSPATH = '__JS__';
+            var IMAGESPATH = '__IMAGES__';
+        </script>
+        {block name="head-js"}<!-- 头部JS -->{/block}
+        {block name="css"}<!-- 头部CSS -->{/block}
+    </head>
+    <body>
+        <div style="height: 100%; position: relative;">
+        <div style="width: 100%; position: absolute; z-index: 10;">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td height="57" background="__IMAGES__/main_03.gif" style="background-size:100% 100%; FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='main_03.gif' ,sizingMethod='scale')\9;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="378" height="57">&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td width="281" valign="bottom">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td width="33" height="27">
+                                                <img src="__IMAGES__/main_05.gif" width="33" height="27"/>
+                                            </td>
+                                            <td width="248" background="__IMAGES__/main_06.gif">
+                                                <table width="225" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td height="17">
+                                                            <div align="right">
+                                                                <a href="{:Url('@admin/Manager/changePassword')}"><img src="__IMAGES__/pass.gif" width="69" height="17"/></a>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div align="right">
+                                                                <a href="{:Url('@admin/Manager/detail')}"><img src="__IMAGES__/user.gif" width="69" height="17"/></a>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div align="right">
+                                                                <a href="{:Url('@admin/Login/Loginout')}"><img src="__IMAGES__/quit.gif" width="69" height="17"/></a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="40" background="__IMAGES__/main_10.gif">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="194" height="40" background="__IMAGES__/main_07.gif">&nbsp;</td>
+                                <td>
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td width="21">
+                                                <a class="navi-a" href="{:Url('@admin/Index/index')}">
+                                                    <img src="__IMAGES__/main_13.gif" width="19" height="14"/>
+                                                </a>
+                                            </td>
+                                            <td width="35" class="STYLE7">
+                                                <div align="center"><a class="navi-a" href="{:Url('@admin/Rbac/roleList')}">首页</a></div>
+                                            </td>
+                                            <td width="21" class="STYLE7">
+                                                <a class="navi-a" onclick="window.history.go(-1)">
+                                                    <img src="__IMAGES__/main_15.gif" width="19" height="14"/>
+                                                </a>
+                                            </td>
+                                            <td width="35" class="STYLE7">
+                                                <div align="center"><a class="navi-a" onclick="window.history.go(-1)">后退</a></div>
+                                            </td>
+                                            <td width="21" class="STYLE7">
+                                                <a class="navi-a" onclick="window.history.go(1)">
+                                                    <img src="__IMAGES__/main_17.gif" width="19" height="14" />
+                                                </a>
+                                            </td>
+                                            <td width="35" class="STYLE7">
+                                                <div align="center"><a class="navi-a" onclick="window.history.go(1)">前进</a></div>
+                                            </td>
+                                            <td width="21" class="STYLE7">
+                                                <a class="navi-a" onclick="window.location.reload()">
+                                                    <img src="__IMAGES__/main_19.gif" width="19" height="14"/>
+                                                </a>
+                                            </td>
+                                            <td width="35" class="STYLE7">
+                                                <div align="center"><a class="navi-a" onclick="window.location.reload()">刷新</a></div>
+                                            </td>
+                                            <td width="21" class="STYLE7">
+                                                <img src="__IMAGES__/main_21.gif" width="19" height="14"/>
+                                            </td>
+                                            <td width="35" class="STYLE7">
+                                                <div align="center" title="抱歉，此功能暂时不可用。">帮助</div>
+                                            </td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="248" background="__IMAGES__/main_11.gif">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td width="16%">
+                                                <span class="STYLE5"></span>
+                                            </td>
+                                            <td width="75%">
+                                                <div align="center">
+                                                    <span class="STYLE7">服务器时间：{:date("Y-m-d H:i:s")}</span>
+                                                </div>
+                                            </td>
+                                            <td width="9%">&nbsp;</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="30" background="__IMAGES__/main_31.gif">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="8" height="30">
+                                    <img src="__IMAGES__/main_28.gif" width="8" height="30"/>
+                                </td>
+                                <td width="147" background="__IMAGES__/main_29.gif">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td width="24%">&nbsp;</td>
+                                            <td width="43%" height="20" valign="bottom" class="STYLE1">管理菜单</td>
+                                            <td width="33%">&nbsp;</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="39">
+                                    <img src="__IMAGES__/main_30.gif" width="39" height="30"/>
+                                </td>
+                                <td>
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td height="20" valign="bottom">
+                                                <span class="STYLE1">当前登录用户：{$Think.session.account}
+                                                    &nbsp;用户角色：管理员</span>
+                                            </td>
+                                            <td valign="bottom" class="STYLE1">
+                                                <div align="right">
+                                                    <img src="__IMAGES__/sj.gif" width="6" height="7"/>
+                                                    IP：{$Think.server.REMOTE_ADDR} &nbsp; &nbsp;&nbsp;
+                                                    <img src="__IMAGES__/sj.gif" width="6" height="7"/>
+                                                    &nbsp;提供商：道亨 &nbsp; &nbsp;
+                                                    <img src="__IMAGES__/sj.gif" width="6" height="7"/>
+                                                    &nbsp;单位：教育
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="17">
+                                    <img src="__IMAGES__/main_32.gif" width="17" height="30"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="width: 100%; height: 100%; position: absolute;">
+            <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="8" bgcolor="#353c44">&nbsp;</td>
+                    <td width="147" valign="top">
+                        <div style="margin-top: 127px;">
+                            <table width="147" border="0" align="center" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td height="23" background="__IMAGES__/main_34.gif">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td width="9%">&nbsp;</td>
+                                                <td width="83%">
+                                                    <div align="center" class="STYLE5"></div>
+                                                </td>
+                                                <td width="8%">&nbsp;</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">
+                                        <div class="menu-box">
+                                            <a name="User" class="a" href="{:Url('')}">人员管理</a>
+                                            <a id="menu" class="a" href="javascript:void(0);" name='min'>权限管理</a>
+                                            <div class="submenu">
+                                                <a name="index" class="a" href="{:Url('@admin/Rbac/index')}">&nbsp;&nbsp;角色分配</a>
+                                                <a name="role" class="a" href="{:Url('@admin/Rbac/roleList')}">&nbsp;&nbsp;角色管理</a>
+                                                <a name="node" class="a" href="{:Url('@admin/Rbac/nodeList')}">&nbsp;&nbsp;节点管理</a>
+                                            </div>
+                                        </div>
+                                        <input id="menu-now" type="hidden" value="{$Request.controller}" />
+                                        <input id="node-now" type="hidden" value="{$Request.action}" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                    <td width="10" bgcolor="#add2da">&nbsp;</td>
+                    <td valign="top">
+                        <div style="margin-top:127px;">
+                            {block name="body"}<!-- 网页内容 -->{/block}
+                        </div>
+                    </td>
+                    <td width="8" bgcolor="#353c44">&nbsp;</td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td background="__IMAGES__/main_71.gif" style="line-height: 11px; table-layout: fixed" width="165">&nbsp;</td>
+                    <td background="__IMAGES__/main_72.gif" style="line-height: 11px; table-layout: fixed">&nbsp;</td>
+                    <td background="__IMAGES__/main_74.gif" style="line-height: 11px; table-layout: fixed" width="17">&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </body>
+    <script type="text/javascript" src="__JS__/layout-foot.js"></script>
+    {block name="foot-js"}<!-- 底部JS -->{/block}
+    <script type="text/javascript">
+        $('input').attr('autocomplete', 'off');
+    </script>
+</html>

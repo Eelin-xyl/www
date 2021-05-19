@@ -1,0 +1,36 @@
+<table width="100%">
+    <tr>
+        <td width="50%">
+            {volist name="num" id="vo" key="k" length="81" mod="27" }
+                {php}
+                    if ($vo > 10)
+                    {
+                        $color = 'red';
+                        $vo -= 10;
+                    }
+                    else
+                    {
+                        $color = '';
+                    }
+                {/php}
+                <button style="width:60px; height:60px;">
+                    <font size="6" color="{$color}">{$vo}</font>
+                </button>
+                {eq name="mod" value="2"}&nbsp;&nbsp;&nbsp;{/eq}
+                {eq name="mod" value="5"}&nbsp;&nbsp;&nbsp;{/eq}
+                {eq name="mod" value="11"}&nbsp;&nbsp;&nbsp;{/eq}
+                {eq name="mod" value="14"}&nbsp;&nbsp;&nbsp;{/eq}
+                {eq name="mod" value="20"}&nbsp;&nbsp;&nbsp;{/eq}
+                {eq name="mod" value="23"}&nbsp;&nbsp;&nbsp;{/eq}
+                {eq name="mod" value="8"}<p></p>{/eq}
+                {eq name="mod" value="17"}<p></p>{/eq}
+                {eq name="mod" value="26"}<br/><br/><br/>{/eq}
+            {/volist}
+        </td>
+        <td width="50%" align="center">
+            <h1><font size="10">数独完成！</font></h1>
+            <h1><a href="{:url('/index/common/replay')}"><button><font size="5">重新开始</font></button></a></h1>
+            <h1><a href="{:url('/index/demo/restart')}"><button><font size="5">新的数独</font></button></a></h1>
+        </td>
+    </tr>
+</table>

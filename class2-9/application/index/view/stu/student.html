@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+    
+  #tab_{
+     clear: both; font-size: 20px;
+   }
+   #tab1{
+    display: none; font-size:20px;
+  }
+     #tab2{
+    display: none; font-size:20px;
+  }
+  li{
+    float:left; width: 250px;list-style: none; font-size: 35px; color: white;
+    border-radius: 15px;text-align: center; background-color: #808080;
+  }
+  table{
+   border-style:dotted;
+  }
+  input{
+  border: 1px solid #ccc; 
+  padding: 7px 0px;
+  border-radius: 3px; 
+  padding-left:5px;     
+  }
+.choseclass{
+  width:  120px; 
+  height: 40px; 
+  border-width: 0px; 
+  border-radius: 3px; 
+  background: #1E90FF; 
+  cursor: pointer; 
+  outline: none; 
+  font-family: Microsoft YaHei; 
+  color: white; 
+  font-size: 17px;
+}
+  .student{
+   float:left;height:10%;
+  }
+  #tabNav{
+    width:800px;height:60px;margin:0 auto;
+  }
+</style>
+<script type="text/javascript">
+ 	function tab(pid){
+ 	for (var i = 0; i < 3; i++) {
+ 	    document.getElementById('tab'+i).style.display="none";         
+ 		}
+ 		document.getElementById('tab'+pid).style.display="block";		
+ 	}
+</script>
+<title>学生界面</title>
+</head>
+<body>
+<h1 align="center">学生页面</h1>
+<div id="tanContainer">
+  <div class="student">
+    <div align="left"><img src=" __STATIC__{$n.pic} " alt="不存在" width=100px height=100px/></br>
+      欢迎{$n.student}学生
+        <a href="{:url('index/Student/student_update_index',['sid'=>$n.sid])}">{$n.student}</a>
+      <a href="{:url('index/index/out_login_index')}">退出</a>
+    </div>
+  </div>
+  <div id="tabNav">
+      <ul class="nav" style="cursor:pointer">
+        <li role="presentation"  onclick="tab('0')">我的课堂</li>
+        <li role="presentation"  onclick="tab('1')" >查看成绩</li>
+        <li role="presentation"  onclick="tab('2')">参加考试</li>
+      </ul>
+  </div>
+<br/><br/><br/><br/><br/>
+<div id="tab_" align="center">
+   <div id="tab0">
+   <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+     <table class="table table-default table-bordered">
+        <tr class="bg-primary">
+         <td width="200px">课堂编号</td>
+         <td width="200px">课堂名称</td>
+         <td width="200px">课堂人数</td>
+        </tr>
+        <input type="button" value="选课" onclick="window.location.href='{:url('/index/student/student_course_add_index',['sid'=>$sid])}'" id="add">     
+       {volist name="cour" id="c"}
+        <tr>
+         <td>{$c.cid}</td>
+         <td>{$c.cname}</td>
+         <td>{$c.number}</td>   
+        </tr> 
+       {/volist}
+     </table>
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+     {$cour|raw}
+   </div>
+   </div>
+   <div id="tab1">
+      <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+     <div align="center">
+     <table class="table table-default table-bordered">
+        <tr class="bg-primary">
+         <td width="150px">试卷编号</td>
+         <td width="150px">试卷名称</td>
+         <td width="150px">考试成绩</td>
+        </tr>    
+       {volist name="re" id="r"}
+       {if $r.results}
+        <tr>
+         <td>{$r.kid}</td>
+         <td>{$r.shijuan}</td>
+         <td>{$r.results}</td>
+        </tr>
+        {else /}
+        {/if}
+       {/volist}
+     </table>
+     </div>
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+     {$sj|raw}
+   </div>
+   </div>
+   <div id="tab2">
+         <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+     <table class="table table-default table-bordered">
+        <tr class="bg-primary">
+         <td width="150">试卷编号</td>
+         <td width="150">试卷名称</td>
+        </tr>    
+       {volist name="sj" id="j"}
+        <tr>
+         <td>{$j.kid}</td>
+         <td>{$j.shijuan}</td>
+         <td><input type="button" value="参加考试" onclick="window.location.href='{:url('/index/student/kaoshi_index',['kid'=>$j['kid']])}'"></td>     
+        </tr>
+       {/volist}
+     </table>
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+     {$sj|raw}
+   </div>
+   </div>
+ </div>
+</div>
+</body>
+</html>

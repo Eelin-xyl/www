@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+    *{
+     padding: 0;
+    margin: 0;
+  }
+/*  li{
+     list-style: none;
+     float:left;
+   }*/
+  #tab_{
+     clear: both;
+   }
+   #tab1{
+    display: none;
+  }
+     #tab2{
+    display: none;
+  }
+       #tab3{
+    display: none;
+  }
+       #tab4{
+    display: none;
+  }
+  .nav{
+   height:160px; margin:0 auto; 
+  }
+  .nav  li{
+    float:left; width: 20%;list-style: none; font-size: 35px; color: black;
+    border-radius: 15px;text-align: center; background-color: #8080ff; 
+
+  }
+  td{
+    text-align: center
+  }
+</style>
+<script type="text/javascript">
+  function tab(pid){
+  for (var i = 0; i < 5; i++) {
+      document.getElementById('tab'+i).style.display="none";         
+    }
+    document.getElementById('tab'+pid).style.display="block";   
+  }
+</script>
+<title>题库信息</title>
+</head>
+<body>
+<h2><a href="{:url('index/index/admin_index')}">返回</a></h2>
+<div>
+   <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+      <div id="tabNav">
+      <ul class="nav nav-pills  nav-stacked" style="cursor:pointer">
+        <li role="presentation"  onclick="tab('0')">单选题</li>
+        <li role="presentation"  onclick="tab('1')" >多选题</li>
+        <li role="presentation"  onclick="tab('2')">判断题</li>
+        <li role="presentation"  onclick="tab('3')">填空题</li>
+        <li role="presentation"  onclick="tab('4')">简答题</li>
+      </ul>
+      </div>
+      <input type="button" value="添加题目" onclick="window.location.href='{:url('/index/shijuan/a_tk_add_index')}'" id="add">
+   <div id="tab0" align="center">
+         <h1>单 选 题</h1>
+         <p>&nbsp;</p>
+         <ol>
+       {volist name="dan" id="da"}
+       <h3>问题：{$da.timu}</h3>
+       <table width="30%">
+        <tr><td width="15%">选项</td>  <td width="15%">A.{$da.x1}   B.{$da.x2}   C.{$da.x3}  D.{$da.x4}</td></tr>
+        <tr><td>答案</td>  <td>{$da.daan}</td></tr>
+        <tr><td>难度</td>  <td>{$da.nandu}</td></tr>
+        <tr><td>分数</td>  <td>{$da.fs}</td></tr>
+        <tr><td>单元</td>  <td>{$da.dy}</td></tr>
+        <tr><td>知识点</td> <td>{$da.yaodian}</td></tr>
+      </table>
+          <input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/tk_t_delete',['pid'=>$da['pid']])}'">
+          <input type="button" value="修改" onclick="window.location.href='{:url('/index/shijuan/tk_t_update_index',['pid'=>$da['pid']])}'">
+        <p>&nbsp;</p>
+          {/volist}
+       </ol>
+     <div class="text-center">
+     {$dan|raw}
+     </div>
+    </div>
+    <div id="tab1" align="center">
+       <h1>多 选 题</h1>
+       <p>&nbsp;</p>
+         <ol>
+       {volist name="duo" id="du"}
+       <h3>问题：{$du.timu}</h3>
+       <table width="30%">
+        <tr><td width="15%">选项</td><td width="15%">A.{$du.x1}   B.{$du.x2}   C.{$du.x3}  D.{$du.x4}</td></tr>
+        <tr><td>答案</td><td>{$du.daan}</td></tr>
+        <tr><td>难度</td><td>{$du.nandu}</td></tr>
+        <tr><td>分数</td><td>{$du.fs}</td></tr>
+        <tr><td>单元</td><td>{$du.dy}</td></tr>
+        <tr><td>知识点</td><td>{$du.yaodian}</td></tr>
+       </table>
+        <input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_t_delete',['pid'=>$du['pid']])}'"> 
+        <input type="button" value="修改" onclick="window.location.href='{:url('/index/shijuan/shijuan_t_update_index',['pid'=>$du['pid']])}'"> 
+       <p>&nbsp;</p>
+        {/volist}
+       </ol>
+     <div class="text-center">
+     {$duo|raw}
+     </div>
+    </div>
+       <div id="tab2" align="center">
+       <h1>判 断 题</h1> 
+       <p>&nbsp;</p>
+         <ol>
+       {volist name="pan" id="pa"}
+       <h3>问题：{$pa.timu}</h3>
+       <table width="30%">
+        <tr><td width="15%">答案</td><td width="15%">{$pa.daan}</td></tr>
+        <tr><td>难度</td><td>{$pa.nandu}</td></tr>
+        <tr><td>分数</td><td>{$pa.fs}</td></tr>
+        <tr><td>单元</td><td>{$pa.dy}</td></tr>
+        <tr><td>知识点</td><td>{$pa.yaodian}</td></tr>
+        </table>
+        <input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_t_delete',['pid'=>$pa['pid']])}'"> 
+        <input type="button" value="修改" onclick="window.location.href='{:url('/index/shijuan/shijuan_t_update_index',['pid'=>$pa['pid']])}'">  
+        <p>&nbsp;</p>
+        {/volist}
+       </ol>
+     <div class="text-center">
+     {$pan|raw}
+     </div>
+     </div>
+        <div id="tab3" align="center">
+       <h1>填 空 题</h1> 
+       <p>&nbsp;</p>
+         <ol>
+       {volist name="tian" id="ti"}
+       <h3>>问题:{$ti.timu}</h3>
+       <table width="30%">
+        <tr><td width="15%">答案</td><td width="15%">{$ti.daan}</td></tr>
+        <tr><td>难度</td><td>{$ti.nandu}</td></tr>
+        <tr><td>分数</td><td>{$ti.fs}</td></tr>
+        <tr><td>单元</td><td>{$ti.dy}</td></tr>
+        <tr><td>知识点</td><td>{$ti.yaodian}</td></tr>
+      </table>
+        <input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_t_delete',['pid'=>$ti['pid']])}'"> 
+        <input type="button" value="修改" onclick="window.location.href='{:url('/index/shijuan/shijuan_t_update_index',['pid'=>$ti['pid']])}'">  
+        <p>&nbsp;</p>
+        {/volist}
+       </ol>
+     <div class="text-center">
+     {$tian|raw}
+     </div>
+     </div>
+      <div id="tab4" align="center">
+       <h1>简 答 题</h1> 
+       <p>&nbsp;</p>
+         <ol>
+       {volist name="jian" id="ji"}
+       <h3>问题:{$ji.timu}</h3>
+        <table width="30%">
+        <tr><td width="15%">答案</td><td width="15%">{$ji.daan}</td></tr>
+        <tr><td>难度</td><td>{$ji.nandu}</td>
+        <tr><td>分数</td><td>{$ji.fs}</td></tr>
+        <tr><td>单元</td><td>{$ji.dy}</td></tr>
+        <tr><td>知识点</td><td>{$ji.yaodian}</td></tr>
+      </table>
+        <input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_t_delete',['pid'=>$ji['pid']])}'"> 
+        <input type="button" value="修改" onclick="window.location.href='{:url('/index/shijuan/shijuan_t_update_index',['pid'=>$ji['pid']])}'">  
+        <p>&nbsp;</p>
+        {/volist}
+       </ol>
+     <div class="text-center">
+     {$jian|raw}
+     </div>
+     </div>
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+   </div>
+   </div>
+</body>
+</html>

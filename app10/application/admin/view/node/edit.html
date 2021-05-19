@@ -1,0 +1,46 @@
+{extend name="public/base" /}
+{block name="body"}
+<div class="form">
+    <form action="" method="post" />
+    <input hidden="hidden" type="text" name="id" value="{$data['id']}" />
+
+    <dl class="row">
+        <dt class="left">
+            {switch name="$data['level']"}
+                {case value="1"}模块{/case}
+                {case value="2"}控制器{/case}
+                {default /}方法{/switch}名称：
+        </dt>
+        <dd class="right"><input class="input" type="text" name="name" id="titleenname" placeholder="名称" value="{$data['name']}" /></dd>
+    </dl>
+    <dl class="row">
+        <dt class="left">
+            {switch name="$data['level']"}
+                {case value="1"}模块{/case}
+                {case value="2"}控制器{/case}
+                {default /}方法{/switch}描述：
+        </dt>
+        <dd class="right"><input  class="input" type="text" name="title" id="titlename" placeholder="描述" value="{$data['title']}" /></dd>
+    </dl>
+    <dl class="row">
+        <dt class="left">优先排序：</dt>
+        <dd class="right"><input  class="input" type="text" name="sort" id="titlename" value="{$data['sort']}" /></dd>
+    </dl>
+    <dl class="row">
+        <dt class="left">是否开启：</dt>
+        <dd class="right">
+            <input  class="inputradio" type="radio" name="status" value="1" {eq name="$data['status']" value="1"} checked="checked" {/eq} autocomplete="off" id="defvalue" />是
+            <input  class="inputradio" type="radio" name="status" value="0" {eq name="$data['status']" value="0"} checked="checked" {/eq} autocomplete="off" id="defvalue" />否
+        </dd>
+    </dl>
+
+    <dl class="row">
+        <dt class="left"></dt>
+        <dd class="right">
+            {:get_link_info('admin', 'node', 'edit', array(), '提交', array('type' => "submit", 'class' => 'submitbt', 'name' => 'bt', 'id' => 'bt'), 'input')}
+         </dd>
+    </dl>
+    </form>
+</div>
+
+{/block}

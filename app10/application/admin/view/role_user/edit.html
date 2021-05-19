@@ -1,0 +1,45 @@
+{extend name="public/base" /}
+{block name="body"}
+<div class="toolbar">
+    <div class="add left">给 {$data['realname']} 选取角色，将会替代其原有的角色</div>
+</div>
+<div class="form">
+    <form action="" method="post" />
+    <input hidden="hidden" type="text" name="id" value="{$data['userid']}" />
+
+    <dl class="row">
+
+        <dt class="left">当前用户所有角色：</dt>
+        <dd class="right">{volist name="data['role']" id="vo"} {eq name="$vo['name']" value=""} 该用户暂无角色 {else/} [{$vo['name']}] {/eq} {/volist}</dd>
+    </dl>
+    <dl class="row">
+        <dt class="left">
+            <select name="role_id[]">
+                <option value="">选取角色</option>
+                {volist name="role" id="voo"}
+                    <option value="{$voo['id']}">{$voo['remark']}</option>
+                {/volist}
+            </select>
+        </dt>
+        <dd class="right"><input type="button" name="add_role" id="add_role" value="点击添加角色"></dd>
+    </dl>
+    <dl class="row">
+        <dt class="left"></dt>
+        <dd class="right">
+            {:get_link_info('admin', 'RoleUser', 'edit', array(), '提交', array('class' => 'submitbt', 'type' => 'submit', 'name' => 'bt', 'id' => 'bt'), 'input')}
+         </dd>
+    </dl>
+    </form>
+</div>
+
+{/block}
+{block name="foot-js"}
+<script type="text/javascript">
+    $(function(){
+        $("#add_role").click(function(){
+            var html = $(this).parent().siblings('dt').html();
+            $('<dl class="row"><dt class="left">' + html + '</dt></dl>').insertAfter($(this).parent().parent());
+        });
+    });
+</script>
+{/block}

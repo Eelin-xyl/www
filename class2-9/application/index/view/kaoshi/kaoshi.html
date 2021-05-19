@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>在线考试</title>
+
+</head>
+<body>
+<div>
+<a href="{:url('index/index/student_index')}">返回</a>
+   <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+     <form name="form1" enctype="multipart/form-data" method="post" action="{:url('/index/student/shijuan_upload')}" >
+      {if $dan} 
+         <p>单选题</p> 
+         <ol>
+       {volist name="dan" id="da"}
+        <li>{$da.timu}({$da.fs}分)</li><br>
+        A.<input type="checkbox" name="{$da.id}" value="A">{$da.x1}
+        &nbsp;&nbsp;
+        B.<input type="checkbox" name="{$da.id}" value="B">{$da.x2}<br>
+        C.<input type="checkbox" name="{$da.id}" value="C">{$da.x3}
+        &nbsp;&nbsp;
+        D.<input type="checkbox" name="{$da.id}" value="D">{$da.x4}<br><br>
+       {/volist}
+       </ol>
+       {else /} 
+       {/if}
+       {if $duo}
+       <p>多选题</p>
+         <ol>
+       {volist name="duo" id="du"}
+        <li>{$du.timu}({$du.fs}分)</li><br>
+        A.<input type="checkbox" name="{$du.id}" value="A">{$du.x1}
+        &nbsp;&nbsp;
+        B.<input type="checkbox" name="{$du.id}" value="B">{$du.x2}<br>
+        C.<input type="checkbox" name="{$du.id}" value="C">{$du.x3}
+        &nbsp;&nbsp;
+        D.<input type="checkbox" name="{$du.id}" value="D">{$du.x4}<br><br>
+       {/volist}
+       </ol>
+       {else /}
+       {/if}
+       {if $pan}
+       <p>判断题</p> 
+         <ol>
+       {volist name="pan" id="pa"}
+        <li>{$pa.timu}({$pa.fs}分)</li><br>
+        <input type="checkbox" name="{$pa.id}" value="dui">√<br>
+        <input type="checkbox" name="{$pa.id}" value="cuo">×<br><br>    
+       {/volist}
+       </ol>
+       {else /}
+       {/if}
+       {if $tian}
+       <p>填空题</p> 
+         <ol>
+       {volist name="tian" id="ti"}
+        <li>{$ti.timu}({$ti.fs}分)</li><br>
+        <input type="text" name="{$ti.id}" ><br><br>           
+       {/volist}
+       </ol>
+       {else /} 
+       {/if}
+       {if $jian}
+       <p>简答题</p> 
+         <ol>
+       {volist name="jian" id="ji"}
+        <li>{$ji.timu}({$ji.fs}分)</li><br>
+        <input type="text" name="{$ji.id}" ><br>  <br>           
+       {/volist}
+       </ol>
+       {else /} 
+       {/if}
+       <input type="submit" name="bt" value="提交试卷" />  
+       </form>
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+   </div>
+   </div>
+</body>
+</html>

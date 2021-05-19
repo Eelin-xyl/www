@@ -1,0 +1,70 @@
+{layout name="layout/layout_login" /}
+
+
+<div id="bg" class="">
+    <div class="wrap-login">
+        <div class="login clearfix" style="width: 780px;">
+            <div class="left">
+                <img src="__STATIC__/admin/images/login_logo.png" alt=""  />
+              <!--   <p class="text1">标语1</p>
+                <p class="text2">标语2</p> -->
+            </div>
+            <div class="right" style="width: 360px;text-align: center;">
+                <h2>{:config('site_name')}</h2>
+                <form action="{:url('/admin/Login/process')}" method="post">
+                    <p class="p1">
+                        <input type="text" value="admin" id="user" name="username"/>
+                        <label for="user" id="user-word">输入用户名</label>
+                    </p>
+                    <p class="p1">
+                        <input type="password" value="123" name="password" id="psw"/>
+                        <label for="psw" id="psw-word">输入密码</label>
+                    </p>
+                    <p class="p2">
+                        <input type="checkbox" id="forget" class="ace" />
+                        <label for="forget">记住我的登录信息</label>
+                    </p>
+                    <p class="p1 btn">
+                        <input type="submit" value="登录" />
+                    </p>
+                </form>
+                <a href="{:url('admin/login/register')}" > 注册</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        var userval = $("#user-word").html();
+        var pswval = $("#psw-word").html();
+        $("#user").focus(function(){
+            $("#user-word").html("");
+        });
+        $("#user").blur(function(){
+            if($(this).val() === ""){
+                $("#user-word").html(userval);
+            }
+        });
+
+        $("#psw").focus(function(){
+            $("#psw-word").html("");
+        });
+        $("#psw").blur(function(){
+            if($(this).val() === ""){
+                $("#psw-word").html(pswval);
+            }
+        });
+
+        if($("#user").val() === ''){
+            $("#user-word").html(userval);
+        } else {
+            $("#user-word").html('');
+        }
+
+        if($("#psw").val() === ''){
+            $("#psw-word").html(pswval);
+        } else {
+            $("#psw-word").html("");
+        }
+    });
+</script>

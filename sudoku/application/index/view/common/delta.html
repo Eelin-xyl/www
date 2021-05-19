@@ -1,0 +1,38 @@
+<table width="100%">
+    <tr>
+        <td width="50%">
+            {volist name="num" id="vo" key="k" length="81" mod="27" }
+                <a href="{:url('/index/demo/choose', ['key' => $k])}">
+                    {php}
+                        if ($vo > 10)
+                        {
+                            $color = 'red';
+                            $vo -= 10;
+                        }
+                        else
+                        {
+                            $color = '';
+                        }
+                    {/php}
+                    <button style="width:60px; height:60px;">
+                        <font size="6" color="{$color}">{$vo}</font>
+                    </button></a>
+                {eq name="mod" value="2"}&nbsp;&nbsp;&nbsp;{/eq}
+                {eq name="mod" value="5"}&nbsp;&nbsp;&nbsp;{/eq}
+                {eq name="mod" value="11"}&nbsp;&nbsp;&nbsp;{/eq}
+                {eq name="mod" value="14"}&nbsp;&nbsp;&nbsp;{/eq}
+                {eq name="mod" value="20"}&nbsp;&nbsp;&nbsp;{/eq}
+                {eq name="mod" value="23"}&nbsp;&nbsp;&nbsp;{/eq}
+                {eq name="mod" value="8"}<p></p>{/eq}
+                {eq name="mod" value="17"}<p></p>{/eq}
+                {eq name="mod" value="26"}<br/><br/><br/>{/eq}
+            {/volist}
+        </td>
+        <td width="50%" align="center">
+            <h1><font size="10">完成数独</font></h1>
+            <h3>（先点击左边相应区域，再选中数字）</h3>
+            <h1><a href="{:url('/index/demo/replay')}"><button><font size="5">重新开始</font></button></a></h1>
+            <h1><a href="{:url('/index/demo/restart')}"><button><font size="5">新的数独</font></button></a></h1>
+        </td>
+    </tr>
+</table>

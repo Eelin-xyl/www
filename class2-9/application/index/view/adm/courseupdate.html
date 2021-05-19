@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>课程信息</title>
+<style>
+input{
+  border: 1px solid #ccc; 
+  padding: 7px 0px;
+  border-radius: 3px; 
+  padding-left:5px; 
+    }
+.row{text-align:center;}
+
+</style>
+</head>
+<body>
+<div>
+<a href="{:url('index/index/admin_index')}">返回</a>
+<form name="form1" enctype="multipart/form-data" method="post" action="{:url('/index/admin/course_t_update')}" >
+    <table width="600" border="1" align="center">
+        <tbody>
+            <tr>
+                <td height="52" colspan="2" align="center">课程信息</td>
+            </tr>
+            <tr>
+                <td align="right">课程名字：</td>
+                <td><input type="text" name="cname" value="{$tea.cname}"></td>
+            </tr>
+            <tr>
+                <td align="right">任课老师：</td>
+                <td>
+                <input type="text" name="teacher" value="{$tea.teacher}">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" name="bt" value="修改信息" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+   <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+        <p>&nbsp;</p>
+     <table class="table table-default table-bordered" align="center" width="60%">
+        <tr class="bg-primary">
+         <td>学生编号</td>
+         <td>学生姓名</td>
+         <td>学生性别</td>
+        </tr>
+        <input type="button" value="添加学生" onclick="window.location.href='{:url('/index/admin/course_s_add_index')}'" id="add">     
+       {volist name="stu" id="s"}
+        <tr>
+         <td>{$s.sid}</td>
+         <td>{$s.student}</td>
+         <td>{$s.s_sex}</td>
+         <td><input type="button" value="删除" onclick="window.location.href='{:url('/index/admin/course_s_delete',['id'=>$s['sid']])}'"></td>     
+        </tr>
+       {/volist}
+     </table>
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+     {$stu|raw}
+   </div>
+   </div>
+</body>
+</html>

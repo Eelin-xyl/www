@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+<head>
+<style>
+  li{
+    text-align: center
+  }
+</style>
+<meta charset="utf-8">
+<title>试卷信息</title>
+</head>
+<body>
+<a href="{:url('index/index/admin_index')}">返回</a>
+<div align="center">
+   <div class="row">
+     <div class="col-md-2"></div>
+     <div class="col-md-8">
+      <input type="button" value="添加题目" onclick="window.location.href='{:url('/index/shijuan/a_shijuan_tm_add_index',['kid'=>$kid,'cid'=>$cid])}'" id="add">
+      <div>
+      <p>&nbsp;</p>
+      {if $dan}
+      <table border="1">
+        <tr align="center">
+          <th>单选题</th>
+        </tr>  
+        <tr>
+          {volist name="dan" id="da"}
+          <td>
+        问题: {$da.timu}
+          </td>
+          {/volist}
+        </tr>
+        <tr>
+          {volist name="dan" id="da"}
+          <td>选项:A.{$da.x1}   B.{$da.x2}   C.{$da.x3}  D.{$da.x4}</td>
+          {/volist}
+        </tr>
+        <tr>
+          {volist name="dan" id="da"}
+          <td>答案{$da.timu}</td>
+          {/volist}
+        </tr>
+        <tr>
+          {volist name="dan" id="da"}
+          <td>分数{$da.timu}</td>
+          {/volist}
+        </tr>
+        <tr>
+          {volist name="dan" id="da"}
+          <td><input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_tm_delete',['id'=>$da['id']])}'"></td>
+          {/volist}
+        </tr>
+      </table>      
+       {else /} 
+       {/if}
+<p>&nbsp;</p>
+       {if $duo}
+       <table border="1">
+         <tr>
+           <th>多选题</th>
+         </tr>
+         <tr>
+           {volist name="duo" id="du"}
+           <td>问题:{$du.timu}</td>
+           {/volist}
+         </tr>
+         <tr>
+            {volist name="duo" id="du"}
+            <td>选项:A.{$du.x1}   B.{$du.x2}   C.{$du.x3}  D.{$du.x4}</td>
+            {/volist}
+         </tr>
+         <tr>
+            {volist name="duo" id="du"}
+            <td>答案{$du.daan}</td>
+            {/volist}
+         </tr>
+         <tr>
+            {volist name="duo" id="du"}
+            <td>分数{$du.fs}</td>
+            {/volist}
+         </tr>
+         <tr>
+            {volist name="duo" id="du"}
+            <td><input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_tm_delete',['id'=>$du['id']])}'"></td>
+            {/volist}
+          </tr>
+       </table>
+       {else /}
+       {/if}
+<p>&nbsp;</p>
+       {if $pan}
+       <table border="1">
+         <tr>
+           <th>判断题</th>
+         </tr>
+         <tr>
+            {volist name="pan" id="pa"}
+            <td>问题:{$pa.timu}</td>
+            {/volist}
+         </tr>
+         <tr>
+            {volist name="pan" id="pa"}
+            <td>答案{$pa.daan}</td>
+            {/volist}
+         </tr>
+         <tr>
+            {volist name="pan" id="pa"}
+            <td>分数{$pa.fs}</td>
+            {/volist}
+         </tr>
+         <tr>
+            {volist name="pan" id="pa"}
+            <td><input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_tm_delete',['id'=>$pa['id']])}'"></td>
+            {/volist}
+          </tr>
+       </table>
+       {else /}
+       {/if}
+<p>&nbsp;</p>
+       {if $tian}
+       <table>
+         <tr>
+           <th>填空题</th>
+         </tr>
+         <tr>
+            {volist name="tian" id="ti"}
+            <td>问题:{$ti.timu}</td>
+            {/volist}
+         </tr>
+         <tr>
+            {volist name="tian" id="ti"}
+            <td>答案{$ti.daan}</td>
+            {/volist}
+         </tr>
+         <tr>
+            {volist name="tian" id="ti"}
+            <td>分数{$ti.fs}</td>
+            {/volist}
+         </tr>
+         <tr>
+            {volist name="tian" id="ti"}
+            <td><input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_tm_delete',['id'=>$ti['id']])}'"></td>
+            {/volist}
+          </tr>
+       </table>
+       {else /} 
+       {/if}
+       <p>&nbsp;</p>
+       {if $jian}
+       <table border="1">
+         <tr>
+           <th>简答题</th>
+         </tr>
+         <tr>
+            {volist name="jian" id="ji"}
+            <td>问题:{$ji.timu}</td>
+            {/volist}
+         </tr>
+         <tr>
+            {volist name="jian" id="ji"}
+            <td>答案{$ji.daan}</td>
+            {/volist}
+         </tr>
+         <tr>
+            {volist name="jian" id="ji"}
+            <td>分数{$ji.fs}</td>
+            {/volist}
+         </tr>
+         <tr>
+            {volist name="jian" id="ji"}
+            <td><input type="button" value="删除" onclick="window.location.href='{:url('/index/shijuan/shijuan_tm_delete',['id'=>$ji['id']])}'"></td>
+            {/volist}
+          </tr>
+       </table>
+        <p>&nbsp;</p>
+
+       {else /} 
+       {/if}
+       </div>
+     </div>
+     <div class="col-md-2"></div>
+   </div>
+   <div class="text-center">
+   </div>
+   </div>
+</body>
+</html>

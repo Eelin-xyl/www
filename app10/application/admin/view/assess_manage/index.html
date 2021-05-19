@@ -1,0 +1,48 @@
+
+{extend name="public/base" /}
+{block name="head_css"}
+<link rel="stylesheet" type="text/css" href="" />
+{/block}
+{block name="body"}
+<div class="toolbar">
+    <div class="add right">
+        {:get_link_info('admin', 'AssessManage', 'add', array('pid' => 0, 'level' => 1), '添加一级指标', array('class' => "a_active"), 'a')}
+    </div>
+</div>
+<div>
+    {volist name="data" id="v" empty="暂时没有评估指标"}
+    <div>  
+       <p style="font-size:15px;height:44px;line-height:44px;display:block;">
+            <span style="background:#438eb9;display:block;text-indent:10px;height:42px;line-height:42px">
+        {$v.name}
+        {:get_link_info('admin', 'AssessManage', 'add', array('pid' => $v['id'], 'level' => 2), '添加二级指标', array(), 'a')}
+        {:get_link_info('admin', 'AssessManage', 'edit', array('id' => $v['id']), '| 编辑', array(), 'a')}
+        {:get_link_info('admin', 'AssessManage', 'delete', array('id' => $v['id']), '| 删除', array('onClick' => "return confirm('确定要删除该信息？')"), 'a')}
+            </span>
+        </p>
+        {volist name="$v['_children']" id="vv" empty="暂时没有评估指标"}
+            <dl style="margin:10px  30px;border:1px solid #dcdcdc;height:auto;display:block;overflow:hidden;">
+                    <dt>
+                    <p style="font-size:10px;display:block;height:36px;line-height:36px;background:#BEE8F1;text-indent:10px;">       
+                    {$vv['name']}&nbsp;&nbsp;&nbsp;&nbsp;        
+                    {:get_link_info('admin', 'AssessManage', 'add', array('pid' => $vv['id'], 'level' => 3), '添加三级指标', array(), 'a')}
+                    {:get_link_info('admin', 'AssessManage', 'edit', array('id' => $vv['id']), '| 编辑', array(), 'a')}
+                    {:get_link_info('admin', 'AssessManage', 'delete', array('id' => $vv['id']), '| 删除', array('onClick' => "return confirm('确定要删除该信息？')"), 'a')}
+                    </p>
+                    </dt>
+
+                {volist name="$vv['_children']" id="vvv" empty="暂时没有评估指标"}        
+                <dd style="padding:10px;float:left;display:block;">
+                        <span style="color:#344B50;font-size:12px;cursor:default;">
+                         {$vvv['name']}&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                            {:get_link_info('admin', 'AssessManage', 'edit', array('id' => $vvv['id']), '编辑', array(), 'a')}
+                            {:get_link_info('admin', 'AssessManage', 'delete', array('id' => $vvv['id']), '| 删除', array('onClick' => "return confirm('确定要删除该信息？')"), 'a')}     
+                </dd>
+                {/volist}  
+            </dl> 
+        {/volist}                  
+    </div>
+    {/volist}  
+</div>
+{/block}
