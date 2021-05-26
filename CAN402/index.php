@@ -1,33 +1,38 @@
-<html>
-<body>
+<style>
+    td {
+        text-align: center
+    }
+
+    .tag {
+        background-color: yellow;
+    }
+</style>
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "web";
- 
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("connect failed: " . $conn->connect_error);
-} 
-else
-{
-    echo "yes";
-}
-$sql = "SELECT uid, password, nickname, origin, money, regtime FROM userlist";
-$result = $conn->query($sql);
- 
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        echo "uid: " . $row["uid"]. " password: " . $row["password"]. "nickname: " . $row["nickname"] . "origin: " . $row["origin"] . "money: " . $row["money"] . "regtime: " . $row["regtime"] . "<br>";
-    }
-} else {
-    echo "null";
-}
-$conn->close();
+$href = '';
+include 'header.php';
 ?>
+<h1>WELCOME !</h1>
+<div align="center">
+    <table>
+        <tr>
 
-</body>
-</html>
+            <?php
+            include 'connect.php';
+            $sql = "SELECT * FROM picture";
+            $result = $conn->query($sql);
+
+            while ($row = $result->fetch_assoc()) {
+                echo '<td><a href="Picture/picture.php?pid=' . $row["pid"] . '"><img src="' . $row["src"] . '" width = 300px hight = 300px></a></td>';
+            }
+            echo "</tr>";
+            echo "<tr>";
+            $result = $conn->query($sql);
+            while ($row = $result->fetch_assoc()) {
+                echo '<td><a class="tag" href="Picture/tag.php?tag=' . $row["tag"] . '">' . $row["tag"] . '</a><br/><a>Description:&nbsp;&nbsp;' . $row["description"] . '</a></td>';
+            }
+
+            ?>
+        </tr>
+    </table>
+</div>
