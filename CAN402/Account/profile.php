@@ -5,17 +5,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST["name"];
     $password = $_POST["password"];
     $description = $_POST["description"];
-    $file = $_FILES["photo"];
     if (!$name || !$password) {
         echo "<script>alert('Please Input Name and Password !');location='profile.php'</script>";
     } else {
         include '../connect.php';
-        if ($file["error"] > 0) {
+        if ($_FILES["photo"]["error"] != 0) {
             $sql = "SELECT photo FROM userlist WHERE uid = '$uid'";
             $result = $conn->query($sql);
             $row = $result->fetch_assoc();
             $filename = $row['photo'];
         } else {
+            $file = $_FILES["photo"];
             $file["tmp_name"];
             $filename = 'Image/Photo/' . time() . $file["name"];
             move_uploaded_file($file["tmp_name"], "../" . $filename);
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $href = '../';
 include '../header.php';
 include '../connect.php';
-$sql = "SELECT uid, password, name, description, photo FROM userlist WHERE uid = '$uid'";
+$sql = "SELECT * FROM userlist WHERE uid = '$uid'";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $password = $row['password'];

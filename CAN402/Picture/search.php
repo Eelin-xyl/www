@@ -26,6 +26,7 @@ if (!$search) {
             if ($_POST['submit'] == "Search User") {
                 $sql = "SELECT uid, name FROM userlist";
                 $result = $conn->query($sql);
+                $suid = '';
                 while ($row = $result->fetch_assoc()) {
                     if ($row['name'] == $search) {
                         $suid = $row['uid'];

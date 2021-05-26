@@ -8,17 +8,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $description = $_POST["description"];
     $tag = $_POST["tag"];
     $file = $_FILES["picture"];
-
     if (!$description || !$tag) {
         echo "<script>alert('Please Input Information !');location='upload.php'</script>";
-    } else if ($file["error"] > 0) {
-        echo "<script>alert('Please Upload An picture !');location='upload.php'</script>";
+    } else if ($file["error"] != 0) {
+        echo '<script>alert(' . $file["error"] . ');location="upload.php"</script>';
     } else {
+        // $file = $_FILES["picture"];
         $file["tmp_name"];
         $filename = 'Image/Picture/' . date('YmdHis') . $file["name"];
         move_uploaded_file($file["tmp_name"], "../" . $filename);
-        $sql = "INSERT INTO picture (uid, description, tag, src) VALUES ('$uid', '$description', '$tag', '$filename')";
-        mysqli_query($conn, $sql);
+        $sql = "INSERT INTO picture (uid, description, tag, src, ilike, idislike) VALUES ('$uid', '$description', '$tag', '$filename', 0, 0)";
+        if ($conn->query($sql) === false) {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
     }
 }
 ?>
@@ -49,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "<tr>";
         $result = $conn->query($sql);
         while ($row = $result->fetch_assoc()) {
-            echo '<td><a class="tag">' . $row["tag"] . '</a><br/><a>Description:&nbsp;&nbsp;' . $row["description"] . '</a></td>';
+            echo '<td><a class="tag" href="../Picture/tag.php?tag=' . $row["tag"] . '">' . $row["tag"] . '</a><br/><a>Description:&nbsp;&nbsp;' . $row["description"] . '</a></td>';
         }
         echo "</tr>";
 
