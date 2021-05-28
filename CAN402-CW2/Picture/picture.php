@@ -6,9 +6,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $uid = $_SESSION['uid'];
     $comment = $_POST['comment'];
     $pid = $_POST['pid'];
-    include '../connect.php';
-    $sql = "INSERT INTO comment (pid, comment, uid, time) VALUES ('$pid', '$comment', '$uid'," . time() . ")";
-    mysqli_query($conn, $sql);
+    if (!$comment) {
+        echo '<script>alert("Please Input Comment !");location="picture.php?pid=' . $pid . '"</script>';
+    } else {
+        include '../connect.php';
+        $sql = "INSERT INTO comment (pid, comment, uid, time) VALUES ('$pid', '$comment', '$uid'," . time() . ")";
+        mysqli_query($conn, $sql);
+    }
 }
 
 $href = '../';
