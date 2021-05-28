@@ -1,0 +1,21 @@
+body {
+    background-image: url(Image/css/bg.jpg);
+    background-size: cover;
+}
+
+.head {
+    border: 2px solid #151515;
+    background-color: lightsteelblue;
+}
+
+.cmt {
+    background-color: azure;
+}
+
+td {
+    text-align: center
+}
+
+.tag {
+    background-color: yellow;
+}
