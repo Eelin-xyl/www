@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0" client="site" method="upgrade">
+  <name>Yendif Video Share - Search</name>
+  <author>Yendif Technologies (P) Ltd</author>
+  <creationDate>March 2019</creationDate>
+  <copyright>Copyright (c) 2014 - 2019 Yendif Technologies (P) Ltd. All rights reserved.</copyright>
+  <authorEmail>admin@yendifplayer.com</authorEmail>
+  <authorUrl>yendifplayer.com</authorUrl>
+  <version>1.2.8</version>
+  <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+  <description>Add Yendif Video Share Search in your Module Positions.</description>
+  <files>
+  	<folder>tmpl</folder>
+  	<filename>index.html</filename>
+	<filename>helper.php</filename>
+    <filename module="mod_yendifvideoshare_search">mod_yendifvideoshare_search.php</filename>    
+  </files>
+  <config>
+    <fields name="params">
+      <fieldset name="basic">
+	  	<field name="itemid" type="text" label="YENDIF_VIDEO_SHARE_ITEMID" description="YENDIF_VIDEO_SHARE_ITEMID_DESCRIPTION" />
+        <field name="cache" type="list" default="0" label="YENDIF_VIDEO_SHARE_CACHE" description="YENDIF_VIDEO_SHARE_CACHE_DESCRIPTION">
+          <option value="0">YENDIF_VIDEO_SHARE_NEVER</option>
+        </field>
+        <field name="moduleclass_sfx" type="text" label="YENDIF_VIDEO_SHARE_MODULE_CLASS_SUFFIX" description="YENDIF_VIDEO_SHARE_MODULE_CLASS_SUFFIX_DESCRIPTION" size="60" />
+      </fieldset>
+    </fields>
+  </config>
+</extension>

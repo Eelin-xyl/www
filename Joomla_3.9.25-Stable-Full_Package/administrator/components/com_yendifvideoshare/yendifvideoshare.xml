@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+  <name>COM_YENDIFVIDEOSHARE</name>
+  <author>Yendif Technologies (P) Ltd</author>
+  <creationDate>March 2019</creationDate>
+  <copyright>Copyright (c) 2014 - 2019 Yendif Technologies (P) Ltd. All rights reserved.</copyright>
+  <authorEmail>admin@yendifplayer.com</authorEmail>
+  <authorUrl>yendifplayer.com</authorUrl>
+  <version>1.2.8</version>
+  <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+  <description>Thank you for installing Yendif Video Share, the powerful video share extension for Joomla!</description>
+  <scriptfile>script.yendifvideoshare.php</scriptfile>
+  <install>
+    <sql>
+      <file driver="mysql" charset="utf8">install.mysql.sql</file>
+      <file driver="mysqli" charset="utf8">install.mysql.sql</file>
+    </sql>
+  </install>
+  <uninstall>
+    <sql>
+      <file driver="mysql" charset="utf8">uninstall.mysql.sql</file>
+      <file driver="mysqli" charset="utf8">uninstall.mysql.sql</file>
+    </sql>
+  </uninstall>
+  <languages folder="language/en-GB">
+    <language tag="en-GB">en-GB.com_yendifvideoshare.ini</language>
+    <language tag="en-GB">en-GB.mod_yendifvideoshare_categories.ini</language>
+    <language tag="en-GB">en-GB.mod_yendifvideoshare_videos.ini</language>
+    <language tag="en-GB">en-GB.mod_yendifvideoshare_player.ini</language>
+    <language tag="en-GB">en-GB.mod_yendifvideoshare_playlist.ini</language>
+    <language tag="en-GB">en-GB.mod_yendifvideoshare_search.ini</language>
+  </languages>
+  <files folder="components/com_yendifvideoshare">
+    <folder>controllers</folder>
+    <folder>models</folder>
+    <folder>views</folder>
+    <filename>index.html</filename>
+    <filename>komento_plugin.php</filename>
+    <filename>router.php</filename>
+    <filename>yendifvideoshare.php</filename>
+  </files>
+  <media destination="yendifvideoshare" folder="media/yendifvideoshare">
+    <folder>adverts</folder>
+    <folder>assets</folder>
+    <folder>categories</folder>
+    <folder>player</folder>
+    <folder>videos</folder>
+    <filename>index.html</filename>
+  </media>
+  <administration>
+    <menu img="../media/yendifvideoshare/assets/admin/images/logo_16x12.png">COM_YENDIFVIDEOSHARE</menu>
+    <files folder="administrator/components/com_yendifvideoshare">
+      <folder>controllers</folder>
+      <folder>elements</folder>
+      <folder>libraries</folder>
+      <folder>models</folder>
+      <folder>tables</folder>
+      <folder>views</folder>
+      <filename>access.xml</filename>
+      <filename>config.xml</filename>
+      <filename>index.html</filename>
+      <filename>install.mysql.sql</filename>
+      <filename>uninstall.mysql.sql</filename>
+      <filename>yendifvideoshare.php</filename>
+    </files>
+    <languages folder="administrator/language/en-GB">
+      <language tag="en-GB">en-GB.com_yendifvideoshare.ini</language>
+      <language tag="en-GB">en-GB.com_yendifvideoshare.sys.ini</language>
+      <language tag="en-GB">en-GB.plg_content_yendifvideoshare.ini</language>
+      <language tag="en-GB">en-GB.plg_search_yendifvideoshare.ini</language>
+    </languages>
+  </administration>
+  <modules>
+    <module module="mod_yendifvideoshare_categories" client="site"/>
+    <module module="mod_yendifvideoshare_videos" client="site"/>
+    <module module="mod_yendifvideoshare_player" client="site"/>
+    <module module="mod_yendifvideoshare_playlist" client="site"/>
+    <module module="mod_yendifvideoshare_search" client="site"/>
+  </modules>
+  <plugins>
+    <plugin plugin="yendifvideoshare" group="content"/>
+    <plugin plugin="yendifvideoshare" group="search"/>
+  </plugins>
+  <updateservers>
+    <server type="extension" name="Yendif Video Share - Updates" priority="2">https://yendifplayer.com/updates/yendifvideoshare-update.xml</server>
+  </updateservers>
+</extension>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0" client="site" method="upgrade">
+  <name>Yendif Video Share - Player</name>
+  <author>Yendif Technologies (P) Ltd</author>
+  <creationDate>March 2019</creationDate>
+  <copyright>Copyright (c) 2014 - 2019 Yendif Technologies (P) Ltd. All rights reserved.</copyright>
+  <authorEmail>admin@yendifplayer.com</authorEmail>
+  <authorUrl>yendifplayer.com</authorUrl>
+  <version>1.2.8</version>
+  <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+  <description>Add a Single Video Player in your Module Positions.</description>
+  <files>
+  	<folder>tmpl</folder>
+    <filename>helper.php</filename>
+    <filename>index.html</filename>
+    <filename module="mod_yendifvideoshare_player">mod_yendifvideoshare_player.php</filename>
+  </files>
+  <config>
+    <fields name="params" addfieldpath="/administrator/components/com_yendifvideoshare/elements">
+      <fieldset name="basic">
+        <field name="videoid" type="sql" default="0" label="YENDIF_VIDEO_SHARE_SELECT_VIDEO" description="YENDIF_VIDEO_SHARE_SELECT_VIDEO_DESCRIPTION"  
+			query="select id,title from #__yendifvideoshare_videos where published=1 order by title ASC" key_field="id" value_field="title" >
+          <option value="latest">YENDIF_VIDEO_SHARE_LATEST</option>
+          <option value="random">YENDIF_VIDEO_SHARE_RANDOM</option>
+        </field>
+		<field name="catid" type="categories" default="0" label="YENDIF_VIDEO_SHARE_SELECT_CATEGORY" description="YENDIF_VIDEO_SHARE_SELECT_CATEGORY_DESCRIPTION"/>
+        <field name="show_title" type="list" default="0" label="YENDIF_VIDEO_SHARE_VIDEO_TITLE" description="YENDIF_VIDEO_SHARE_VIDEO_TITLE_DESCRIPTION">
+          <option value="1">YENDIF_VIDEO_SHARE_SHOW</option>
+          <option value="0">YENDIF_VIDEO_SHARE_HIDE</option>
+        </field>
+        <field name="show_description" type="list" default="0" label="YENDIF_VIDEO_SHARE_VIDEO_DESCRIPTION" description="YENDIF_VIDEO_SHARE_VIDEO_DESCRIPTION">
+          <option value="1">YENDIF_VIDEO_SHARE_SHOW</option>
+          <option value="0">YENDIF_VIDEO_SHARE_HIDE</option>
+        </field>
+        <field name="ratio" type="text" label="YENDIF_VIDEO_SHARE_RATIO" description="YENDIF_VIDEO_SHARE_RATIO_DESCRIPTION" />
+        <field type="spacer" name="skin_settings" label="YENDIF_VIDEO_SHARE_SKIN_SETTINGS_DESCRIPTION" />
+        <field name="theme" type="list" default="global" label="YENDIF_VIDEO_SHARE_THEME" description="YENDIF_VIDEO_SHARE_THEME_DESCRIPTION">
+          <option value="global">YENDIF_VIDEO_SHARE_GLOBAL</option>
+          <option value="black">YENDIF_VIDEO_SHARE_BLACK</option>
+          <option value="white">YENDIF_VIDEO_SHARE_WHITE</option>
+        </field>
+        <field name="controlbar" type="list" default="global" label="YENDIF_VIDEO_SHARE_CONTROLBAR" description="YENDIF_VIDEO_SHARE_CONTROLBAR_DESCRIPTION">
+          <option value="global">YENDIF_VIDEO_SHARE_GLOBAL</option>
+          <option value="1">YENDIF_VIDEO_SHARE_YES</option>
+          <option value="0">YENDIF_VIDEO_SHARE_NO</option>
+        </field>
+        <field name="playbtn" type="list" default="global" label="YENDIF_VIDEO_SHARE_PLAY_BUTTON" description="YENDIF_VIDEO_SHARE_PLAY_BUTTON_DESCRIPTION">
+          <option value="global">YENDIF_VIDEO_SHARE_GLOBAL</option>
+          <option value="1">YENDIF_VIDEO_SHARE_YES</option>
+          <option value="0">YENDIF_VIDEO_SHARE_NO</option>
+        </field>
+        <field name="playpause" type="list" default="global" label="YENDIF_VIDEO_SHARE_PLAYPAUSE" description="YENDIF_VIDEO_SHARE_PLAYPAUSE_DESCRIPTION">
+          <option value="global">YENDIF_VIDEO_SHARE_GLOBAL</option>
+          <option value="1">YENDIF_VIDEO_SHARE_YES</option>
+          <option value="0">YENDIF_VIDEO_SHARE_NO</option>
+        </field>
+        <field name="currenttime" type="list" default="global" label="YENDIF_VIDEO_SHARE_CURRENTTIME" description="YENDIF_VIDEO_SHARE_CURRENTTIME_DESCRIPTION">
+          <option value="global">YENDIF_VIDEO_SHARE_GLOBAL</option>
+          <option value="1">YENDIF_VIDEO_SHARE_YES</option>
+          <option value="0">YENDIF_VIDEO_SHARE_NO</option>
+        </field>
+        <field name="progress" type="list" default="global" label="YENDIF_VIDEO_SHARE_PROGRESS" description="YENDIF_VIDEO_SHARE_PROGRESS_DESCRIPTION">
+          <option value="global">YENDIF_VIDEO_SHARE_GLOBAL</option>
+          <option value="1">YENDIF_VIDEO_SHARE_YES</option>
+          <option value="0">YENDIF_VIDEO_SHARE_NO</option>
+        </field>
+        <field name="duration" type="list" default="global" label="YENDIF_VIDEO_SHARE_DURATION" description="YENDIF_VIDEO_SHARE_CONTROLBAR_DURATION_DESCRIPTION">
+          <option value="global">YENDIF_VIDEO_SHARE_GLOBAL</option>
+          <option value="1">YENDIF_VIDEO_SHARE_YES</option>
+          <option value="0">YENDIF_VIDEO_SHARE_NO</option>
+        </field>
+        <field name="volumebtn" type="list" default="global" label="YENDIF_VIDEO_SHARE_VOLUME_BUTTON" description="YENDIF_VIDEO_SHARE_VOLUME_BUTTON_DESCRIPTION">
+          <option value="global">YENDIF_VIDEO_SHARE_GLOBAL</option>
+          <option value="1">YENDIF_VIDEO_SHARE_YES</option>
+          <option value="0">YENDIF_VIDEO_SHARE_NO</option>
+        </field>
+        <field name="fullscreen" type="list" default="global" label="YENDIF_VIDEO_SHARE_FULLSCREEN" description="YENDIF_VIDEO_SHARE_FULLSCREEN_DESCRIPTION">
+          <option value="global">YENDIF_VIDEO_SHARE_GLOBAL</option>
+          <option value="1">YENDIF_VIDEO_SHARE_YES</option>
+          <option value="0">YENDIF_VIDEO_SHARE_NO</option>
+        </field>
+        <field name="embed" type="list" default="global" label="YENDIF_VIDEO_SHARE_EMBED" description="YENDIF_VIDEO_SHARE_EMBED_DESCRIPTION">
+          <option value="global">YENDIF_VIDEO_SHARE_GLOBAL</option>
+          <option value="1">YENDIF_VIDEO_SHARE_YES</option>
+          <option value="0">YENDIF_VIDEO_SHARE_NO</option>
+        </field>
+        <field type="spacer" name="playback_settings" label="YENDIF_VIDEO_SHARE_PLAYBACK_SETTINGS_DESCRIPTION" />
+      <field name="volume" type="text" label="YENDIF_VIDEO_SHARE_VOLUME" description="YENDIF_VIDEO_SHARE_VOLUME_DESCRIPTION" />
+        <field name="autoplay" type="list" default="global" label="YENDIF_VIDEO_SHARE_AUTOPLAY" description="YENDIF_VIDEO_SHARE_AUTOPLAY_DESCRIPTION">
+          <option value="global">YENDIF_VIDEO_SHARE_GLOBAL</option>
+          <option value="1">YENDIF_VIDEO_SHARE_YES</option>
+          <option value="0">YENDIF_VIDEO_SHARE_NO</option>
+        </field>
+        <field name="loop" type="list" default="global" label="YENDIF_VIDEO_SHARE_LOOP" description="YENDIF_VIDEO_SHARE_LOOP_DESCRIPTION">
+          <option value="global">YENDIF_VIDEO_SHARE_GLOBAL</option>
+          <option value="1">YENDIF_VIDEO_SHARE_YES</option>
+          <option value="0">YENDIF_VIDEO_SHARE_NO</option>
+        </field>
+        <field type="spacer" name="advanced_settings" label="YENDIF_VIDEO_SHARE_ADVANCED_SETTINGS" />
+        <field name="cache" type="list" default="0" label="YENDIF_VIDEO_SHARE_CACHE" description="YENDIF_VIDEO_SHARE_CACHE_DESCRIPTION">
+          <option value="0">YENDIF_VIDEO_SHARE_NEVER</option>
+        </field>
+        <field name="moduleclass_sfx" type="text" label="YENDIF_VIDEO_SHARE_MODULE_CLASS_SUFFIX" description="YENDIF_VIDEO_SHARE_MODULE_CLASS_SUFFIX_DESCRIPTION" size="60" />
+      </fieldset>
+    </fields>
+  </config>
+</extension>

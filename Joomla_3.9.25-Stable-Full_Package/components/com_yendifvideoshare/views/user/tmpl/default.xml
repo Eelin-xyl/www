@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+  <layout title="YENDIF_VIDEO_SHARE_ADD_NEW_VIDEO">
+    <message>YENDIF_VIDEO_SHARE_ADD_NEW_VIDEO_DESCRIPTION</message>
+  </layout>
+  <state>
+    <name>YENDIF_VIDEO_SHARE_ADD_NEW_VIDEO</name>
+    <description>YENDIF_VIDEO_SHARE_ADD_NEW_VIDEO_DESCRIPTION</description>
+  </state>
+</metadata>

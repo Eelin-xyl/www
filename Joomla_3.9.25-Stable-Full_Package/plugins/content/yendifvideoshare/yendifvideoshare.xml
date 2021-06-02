@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="3.0" group="content" method="upgrade">
+  <name>Yendif Video Share - Player</name>
+  <author>Yendif Technologies (P) Ltd</author>
+  <creationDate>March 2019</creationDate>
+  <copyright>Copyright (c) 2014 - 2019 Yendif Technologies (P) Ltd. All rights reserved.</copyright>
+  <authorEmail>admin@yendifplayer.com</authorEmail>
+  <authorUrl>yendifplayer.com</authorUrl>
+  <version>1.2.8</version>
+  <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+  <description>Plugin to add Videos to your article pages.</description>
+  <files>
+    <filename>index.html</filename>
+	<filename plugin="yendifvideoshare">yendifvideoshare.php</filename>
+  </files>
+</extension>
